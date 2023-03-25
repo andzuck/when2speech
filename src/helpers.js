@@ -8,8 +8,8 @@ const beforeRegex =/before/;
 const afterRegex = /after/
 const customChrono = chrono.casual.clone();
 
-let MIN_HOUR = 5;
-let MAX_HOUR = 23;
+let MIN_HOUR = 0;
+let MAX_HOUR = 24;
 let MIN_MEETING_LENGTH_MIN = 30;
 let MIN_TIMEBLOCK_MIN = 15;
 
@@ -160,6 +160,7 @@ customChrono.refiners.push({
     }
 });
 
+// TODO: add support for time zone! (by leaving it in datetime object)
 // Concepts incorporated: Text Time Description
 // Takes text and processes it into a dictionary of available times for each day of the week: {0: [[sun-datetimestart1, sun-datetimeend1], [sun-datetimestart2, sun-datetimeend2]], 1: [], ... 6: []}
 function processText(text) {
