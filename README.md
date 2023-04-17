@@ -4,3 +4,4 @@ Right now, this app only works on Google Chrome because of the speech recognitio
 
 1. First, run the server in [andzuck/when2speech-server](https://github.com/andzuck/when2speech-server).
 2. `npm run dev`
+3. Go to relevant localhost in Google Chrome
