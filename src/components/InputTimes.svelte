@@ -1,7 +1,9 @@
 <script>
 	import VoiceRecognition from './VoiceRecognition.svelte'
 	import {processText, makeTimeArr, getTopNIntervals} from '../helpers.js';
-	import Table from './Table.svelte'
+	import Table from './Table.svelte';
+	import { storedData, currentUser } from '../stores.js';
+
 	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	let voiceText = '';
 	let typedText = '';
@@ -12,16 +14,16 @@
 	import accessibleDate from 'accessible-date';
 
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
-	console.log(topIntervals);
+	// console.log(topIntervals);
 	getTimes();
 	
 
 	// Concepts incorporated: Rendering Times
 	let topTimesText = topTimesToText(topIntervals);
 	async function topTimesToText(topIntervalsPromise) {
-		console.log({topIntervalsPromise})
+		// console.log({topIntervalsPromise})
 		let topIntervals = await topIntervalsPromise;
-		console.log({topIntervals})
+		// console.log({topIntervals})
 		let topTimesText = [];
 		topIntervals.forEach((interval) => {
 			let day = interval['start'][0];
@@ -88,7 +90,7 @@
 			body: JSON.stringify({name: username, times: strUserTimes})
 		}
 		const data = await(await fetch(API_BASE + '/userTimes', requestOptions)).json()
-		console.log(data)
+		// console.log(data)
 		return data
 	}
 	
@@ -101,10 +103,12 @@
 			postTimes(name, availableTimes);
 			let userTimes = await getAllUserTimes(true);
 			topTimesText = topTimesToText(getTopNIntervals(userTimes, 5));
+			storedData.set($storedData.concat(userTimes[userTimes.length - 1]["times"]));
 			name = '';
 			text = '';
 		}
-		window.location.reload()
+		window.location.reload();
+		console.log($storedData);
 		
 	};
 
@@ -112,9 +116,9 @@
 	async function getAllUserTimes(allInfo = false) {
 		let userTimes = [];
 		let payload = await getTimes();
-		console.log({payload})
+		// console.log({payload})
 		for (let i = 0; i < payload.length; i++) {
-			console.log(`getting user times: ${JSON.parse(payload[i].times)}`)
+			// console.log(`getting user times: ${JSON.parse(payload[i].times)}`)
 			if (allInfo){
 				userTimes.push({name: payload[i].name,times:JSON.parse(payload[i].times)});
 			}
@@ -128,6 +132,7 @@
 	};
 
 	$: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
+	console.log($storedData);
 
 </script>
 

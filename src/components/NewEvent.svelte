@@ -6,6 +6,7 @@
 	let startDate = '';
 	let endDate = '';
 	let timeZone = '';
+  export let onNewEvent;
 </script>
 <head>
   <script

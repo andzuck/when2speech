@@ -18,7 +18,7 @@
           : type === "PLAY" && !isActive
           ? "PAUSE"
           : type;
-      console.log(actionType);
+      // console.log(actionType);
       dispatch("recorderHandler", {
         actionType: actionType
       });
