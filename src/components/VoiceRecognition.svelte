@@ -103,13 +103,6 @@
 
 </script>
 
-<!--Recorder Start-->
 <Recorder on:recorderHandler={recorderHandler}/>
-<!--Recorder End-->
-
-
-<!-- {#each Object.entries(processTimes(noteContent)) as [day, arr]}
-<p>{day}, {arr}</p>
-{/each} -->
    
   
