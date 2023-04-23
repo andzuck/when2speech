@@ -107,7 +107,7 @@
 			name = '';
 			text = '';
 		}
-		window.location.reload();
+		// window.location.reload();
 		console.log($storedData);
 		
 	};

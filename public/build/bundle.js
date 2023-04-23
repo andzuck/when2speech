@@ -13108,15 +13108,15 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[21].accessibleTime);
-    			add_location(time, file$4, 164, 11, 5988);
-    			add_location(b, file$4, 164, 8, 5985);
-    			add_location(br0, file$4, 165, 5, 6108);
-    			add_location(u, file$4, 166, 5, 6118);
-    			add_location(br1, file$4, 166, 34, 6147);
-    			add_location(p, file$4, 164, 5, 5982);
+    			add_location(time, file$4, 164, 11, 5991);
+    			add_location(b, file$4, 164, 8, 5988);
+    			add_location(br0, file$4, 165, 5, 6111);
+    			add_location(u, file$4, 166, 5, 6121);
+    			add_location(br1, file$4, 166, 34, 6150);
+    			add_location(p, file$4, 164, 5, 5985);
     			attr_dev(div, "class", "top-time svelte-n0rlhk");
-    			add_location(div, file$4, 163, 4, 5952);
-    			add_location(br2, file$4, 169, 4, 6191);
+    			add_location(div, file$4, 163, 4, 5955);
+    			add_location(br2, file$4, 169, 4, 6194);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13179,7 +13179,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$4, 160, 4, 5873);
+    			add_location(p, file$4, 160, 4, 5876);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13357,47 +13357,47 @@ var app = (function () {
     			t36 = space();
     			info.block.c();
     			attr_dev(h1, "class", "svelte-n0rlhk");
-    			add_location(h1, file$4, 139, 1, 4750);
-    			add_location(h20, file$4, 140, 1, 4772);
-    			add_location(h21, file$4, 143, 3, 4906);
-    			add_location(h30, file$4, 144, 21, 4960);
+    			add_location(h1, file$4, 139, 1, 4753);
+    			add_location(h20, file$4, 140, 1, 4775);
+    			add_location(h21, file$4, 143, 3, 4909);
+    			add_location(h30, file$4, 144, 21, 4963);
     			attr_dev(label, "for", "name");
-    			add_location(label, file$4, 144, 3, 4942);
+    			add_location(label, file$4, 144, 3, 4945);
     			attr_dev(input0, "id", "name");
-    			add_location(input0, file$4, 145, 3, 4986);
-    			add_location(h31, file$4, 146, 3, 5025);
-    			add_location(b0, file$4, 147, 6, 5072);
-    			add_location(b1, file$4, 147, 29, 5095);
-    			add_location(u0, file$4, 147, 75, 5141);
-    			add_location(i0, file$4, 147, 114, 5180);
-    			add_location(u1, file$4, 147, 167, 5233);
-    			add_location(i1, file$4, 147, 181, 5247);
-    			add_location(i2, file$4, 147, 201, 5267);
-    			add_location(u2, file$4, 147, 219, 5285);
-    			add_location(i3, file$4, 147, 234, 5300);
-    			add_location(p, file$4, 147, 3, 5069);
+    			add_location(input0, file$4, 145, 3, 4989);
+    			add_location(h31, file$4, 146, 3, 5028);
+    			add_location(b0, file$4, 147, 6, 5075);
+    			add_location(b1, file$4, 147, 29, 5098);
+    			add_location(u0, file$4, 147, 75, 5144);
+    			add_location(i0, file$4, 147, 114, 5183);
+    			add_location(u1, file$4, 147, 167, 5236);
+    			add_location(i1, file$4, 147, 181, 5250);
+    			add_location(i2, file$4, 147, 201, 5270);
+    			add_location(u2, file$4, 147, 219, 5288);
+    			add_location(i3, file$4, 147, 234, 5303);
+    			add_location(p, file$4, 147, 3, 5072);
     			attr_dev(textarea, "aria-label", "an input field for your availability");
     			attr_dev(textarea, "placeholder", "");
     			attr_dev(textarea, "class", "svelte-n0rlhk");
-    			add_location(textarea, file$4, 149, 3, 5459);
-    			add_location(br0, file$4, 150, 3, 5590);
-    			add_location(br1, file$4, 150, 7, 5594);
+    			add_location(textarea, file$4, 149, 3, 5462);
+    			add_location(br0, file$4, 150, 3, 5593);
+    			add_location(br1, file$4, 150, 7, 5597);
     			attr_dev(input1, "class", "submit svelte-n0rlhk");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$4, 151, 3, 5602);
-    			add_location(br2, file$4, 152, 3, 5675);
+    			add_location(input1, file$4, 151, 3, 5605);
+    			add_location(br2, file$4, 152, 3, 5678);
     			attr_dev(div0, "class", "input-side svelte-n0rlhk");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$4, 142, 2, 4864);
-    			add_location(h22, file$4, 158, 3, 5812);
+    			add_location(div0, file$4, 142, 2, 4867);
+    			add_location(h22, file$4, 158, 3, 5815);
     			attr_dev(div1, "class", "top-times-side svelte-n0rlhk");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$4, 157, 2, 5766);
+    			add_location(div1, file$4, 157, 2, 5769);
     			attr_dev(div2, "class", "cf svelte-n0rlhk");
-    			add_location(div2, file$4, 141, 1, 4845);
+    			add_location(div2, file$4, 141, 1, 4848);
     			attr_dev(main, "class", "svelte-n0rlhk");
-    			add_location(main, file$4, 138, 0, 4742);
+    			add_location(main, file$4, 138, 0, 4745);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13657,7 +13657,7 @@ var app = (function () {
     			$$invalidate(0, text = '');
     		}
 
-    		window.location.reload();
+    		// window.location.reload();
     		console.log($storedData);
     	}
 
