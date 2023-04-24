@@ -20,9 +20,9 @@
 
 	// Concepts incorporated: Rendering Times
 	let topTimesText = topTimesToText(topIntervals);
-	async function topTimesToText(topIntervalsPromise) {
+	function topTimesToText(topIntervalsPromise) {
 		// console.log({topIntervalsPromise})
-		let topIntervals = await topIntervalsPromise;
+		let topIntervals = topIntervalsPromise;
 		// console.log({topIntervals})
 		let topTimesText = [];
 		topIntervals.forEach((interval) => {
@@ -77,21 +77,21 @@
 	};
 
 
-	async function getTimes(){
-		const data = await ((await fetch(API_BASE + '/userTimes')).json())
+	function getTimes(){
+		const data = $storedData;
 		return data
 	}
 
-	async function postTimes(username, userTimes){
+	function postTimes(username, userTimes){
 		const strUserTimes = JSON.stringify(userTimes);
 		const requestOptions = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({name: username, times: strUserTimes})
 		}
-		const data = await(await fetch(API_BASE + '/userTimes', requestOptions)).json()
-		// console.log(data)
-		return data
+		const localData = {[username]: strUserTimes}
+		storedData.set(Object.assign({}, localData, $storedData));
+		return localData
 	}
 	
 	async function submit() {
@@ -101,36 +101,36 @@
 		else{
 			availableTimes = processText(text);
 			postTimes(name, availableTimes);
-			let userTimes = await getAllUserTimes(true);
+			let userTimes = getAllUserTimes(true);
 			topTimesText = topTimesToText(getTopNIntervals(userTimes, 5));
+			console.log("topn");
+			console.log(getTopNIntervals(userTimes, 5));
 			currentUser.set(name);
-			storedData.set(Object.assign({}, {[name]: userTimes[userTimes.length - 1]["times"]}, $storedData));
 			name = '';
 			text = '';
+			console.log("top times text");
+			console.log(topTimesText);
 		}
-		// window.location.reload();
-		 console.log("stored Data");
-		 console.log($storedData);
-		 console.log($currentUser);
 		
 	};
 
 	// Concepts incorporated: User
-	async function getAllUserTimes(allInfo = false) {
+	function getAllUserTimes(allInfo = false) {
 		let userTimes = [];
-		let payload = await getTimes();
-		// console.log({payload})
-		for (let i = 0; i < payload.length; i++) {
-			// console.log(`getting user times: ${JSON.parse(payload[i].times)}`)
+		let payload = getTimes();
+		console.log("payday");
+		console.log({payload})
+		for (let i = 0; i < Object.keys(payload).length; i++) {
 			if (allInfo){
-				userTimes.push({name: payload[i].name,times:JSON.parse(payload[i].times)});
+				userTimes.push({name: Object.keys(payload)[i],
+								times: payload[Object.keys(payload)[i]]
+							   });
 			}
 			else{
-				userTimes.push(JSON.parse(payload[i].times));
+				userTimes.push(payload[Object.keys(payload)[i]]);
 			}
 	      	
         };
-		// console.log(userTimes)
 		return userTimes
 	};
 
@@ -175,7 +175,6 @@
 			{/await}
 	</div>
 	</div>
-
 	</main>
 
 <style>
@@ -247,5 +246,4 @@
 	.cf {
 	    *zoom: 1;
 	}
-
 </style>

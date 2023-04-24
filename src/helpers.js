@@ -28,15 +28,15 @@ function createEmptyCalendar() {
 
 // Take a list of [{user, availableTimes}, ...] and returns a single sharedCalendar dictionary of the form {day: {'hour-min': ["user1", "user2", ...], ...}, ...}
 // the key for 9am would be '9-0', for 9:15am would be '9-15', for 9pm woul be '22-0'
-async function createSharedCalendar(userTimes) {
+function createSharedCalendar(userTimes) {
 	console.log({userTimes})
-	let userTimesPayload = await userTimes;
+	let userTimesPayload = userTimes;
 	let sharedCalendar = createEmptyCalendar();
 	console.log({userTimesPayload})
 	userTimesPayload.forEach(obj => {
 		if (obj) {
 			let user = obj['name'];
-			let availableTimes = obj['times'];
+			let availableTimes = JSON.parse(obj['times']);
 			if (availableTimes) {
 				for (const [day, availableBlocks] of Object.entries(availableTimes)) {
 			  availableBlocks.forEach(block => {
@@ -79,10 +79,10 @@ function isSuperset(set, subset) {
 
 // Concepts incorporated: Rendering Times
 // Take userTimes and returns a sorted list of the top N shared available time windows at least minMeetingLengthMin long
-async function getTopNIntervals(userTimesPromise, N) {
-	let userTimes = await userTimesPromise;
+function getTopNIntervals(userTimesPromise, N) {
+	let userTimes = userTimesPromise;
 	console.log({userTimes})
-	let sharedCalendar = await createSharedCalendar(userTimes);
+	let sharedCalendar = createSharedCalendar(userTimes);
 	console.log({sharedCalendar})
 	let sharedIntervals = [];
 	let ongoingIntervals = new Set();
@@ -91,7 +91,7 @@ async function getTopNIntervals(userTimesPromise, N) {
 	for (let d = 0; d < 7; d++) {
 		for (let h = MIN_HOUR; h <= MAX_HOUR; h++) {
 			for (let m = 0; m < 60; m+=15) {
-				let cal = await sharedCalendar[d][h+'-'+m]
+				let cal = sharedCalendar[d][h+'-'+m]
 				// console.log({cal})
 				let userSet = new Set(cal);
 

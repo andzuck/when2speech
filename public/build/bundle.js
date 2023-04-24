@@ -12017,15 +12017,15 @@ var app = (function () {
     }
     // Take a list of [{user, availableTimes}, ...] and returns a single sharedCalendar dictionary of the form {day: {'hour-min': ["user1", "user2", ...], ...}, ...}
     // the key for 9am would be '9-0', for 9:15am would be '9-15', for 9pm woul be '22-0'
-    async function createSharedCalendar(userTimes) {
+    function createSharedCalendar(userTimes) {
     	console.log({userTimes});
-    	let userTimesPayload = await userTimes;
+    	let userTimesPayload = userTimes;
     	let sharedCalendar = createEmptyCalendar();
     	console.log({userTimesPayload});
     	userTimesPayload.forEach(obj => {
     		if (obj) {
     			let user = obj['name'];
-    			let availableTimes = obj['times'];
+    			let availableTimes = JSON.parse(obj['times']);
     			if (availableTimes) {
     				for (const [day, availableBlocks] of Object.entries(availableTimes)) {
     			  availableBlocks.forEach(block => {
@@ -12061,10 +12061,10 @@ var app = (function () {
     }
     // Concepts incorporated: Rendering Times
     // Take userTimes and returns a sorted list of the top N shared available time windows at least minMeetingLengthMin long
-    async function getTopNIntervals(userTimesPromise, N) {
-    	let userTimes = await userTimesPromise;
+    function getTopNIntervals(userTimesPromise, N) {
+    	let userTimes = userTimesPromise;
     	console.log({userTimes});
-    	let sharedCalendar = await createSharedCalendar(userTimes);
+    	let sharedCalendar = createSharedCalendar(userTimes);
     	console.log({sharedCalendar});
     	let sharedIntervals = [];
     	let ongoingIntervals = new Set();
@@ -12072,7 +12072,7 @@ var app = (function () {
     	for (let d = 0; d < 7; d++) {
     		for (let h = MIN_HOUR; h <= MAX_HOUR; h++) {
     			for (let m = 0; m < 60; m+=15) {
-    				let cal = await sharedCalendar[d][h+'-'+m];
+    				let cal = sharedCalendar[d][h+'-'+m];
     				// console.log({cal})
     				let userSet = new Set(cal);
 
@@ -12966,7 +12966,7 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
+    	child_ctx[21] = list[i];
     	return child_ctx;
     }
 
@@ -12988,7 +12988,7 @@ var app = (function () {
     // (165:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
-    	let each_value = /*topTimes*/ ctx[21];
+    	let each_value = /*topTimes*/ ctx[20];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -13013,7 +13013,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*topTimesText, dayArr*/ 12) {
-    				each_value = /*topTimes*/ ctx[21];
+    				each_value = /*topTimes*/ ctx[20];
     				validate_each_argument(each_value);
     				let i;
 
@@ -13059,25 +13059,25 @@ var app = (function () {
     	let p;
     	let b;
     	let time;
-    	let t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "";
+    	let t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[21].day] + "";
     	let t0;
     	let t1;
-    	let t2_value = /*time*/ ctx[22].startTime + "";
+    	let t2_value = /*time*/ ctx[21].startTime + "";
     	let t2;
     	let t3;
-    	let t4_value = /*time*/ ctx[22].endTime + "";
+    	let t4_value = /*time*/ ctx[21].endTime + "";
     	let t4;
     	let time_aria_label_value;
     	let t5;
     	let br0;
     	let t6;
     	let u;
-    	let t7_value = /*time*/ ctx[22].numUsers + "";
+    	let t7_value = /*time*/ ctx[21].numUsers + "";
     	let t7;
     	let t8;
     	let br1;
     	let t9;
-    	let t10_value = /*time*/ ctx[22].users + "";
+    	let t10_value = /*time*/ ctx[21].users + "";
     	let t10;
     	let t11;
     	let t12;
@@ -13107,16 +13107,16 @@ var app = (function () {
     			t12 = space();
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
-    			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[22].accessibleTime);
-    			add_location(time, file$5, 167, 11, 6101);
-    			add_location(b, file$5, 167, 8, 6098);
-    			add_location(br0, file$5, 168, 5, 6221);
-    			add_location(u, file$5, 169, 5, 6231);
-    			add_location(br1, file$5, 169, 34, 6260);
-    			add_location(p, file$5, 167, 5, 6095);
-    			attr_dev(div, "class", "top-time svelte-n0rlhk");
-    			add_location(div, file$5, 166, 4, 6065);
-    			add_location(br2, file$5, 172, 4, 6304);
+    			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[21].accessibleTime);
+    			add_location(time, file$5, 167, 11, 5909);
+    			add_location(b, file$5, 167, 8, 5906);
+    			add_location(br0, file$5, 168, 5, 6029);
+    			add_location(u, file$5, 169, 5, 6039);
+    			add_location(br1, file$5, 169, 34, 6068);
+    			add_location(p, file$5, 167, 5, 5903);
+    			attr_dev(div, "class", "top-time svelte-1a9nea4");
+    			add_location(div, file$5, 166, 4, 5873);
+    			add_location(br2, file$5, 172, 4, 6112);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13142,16 +13142,16 @@ var app = (function () {
     			insert_dev(target, br2, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*topTimesText*/ 4 && t0_value !== (t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*topTimesText*/ 4 && t2_value !== (t2_value = /*time*/ ctx[22].startTime + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*topTimesText*/ 4 && t4_value !== (t4_value = /*time*/ ctx[22].endTime + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*topTimesText*/ 4 && t0_value !== (t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[21].day] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*topTimesText*/ 4 && t2_value !== (t2_value = /*time*/ ctx[21].startTime + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*topTimesText*/ 4 && t4_value !== (t4_value = /*time*/ ctx[21].endTime + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*topTimesText*/ 4 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[22].accessibleTime)) {
+    			if (dirty & /*topTimesText*/ 4 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[21].accessibleTime)) {
     				attr_dev(time, "aria-label", time_aria_label_value);
     			}
 
-    			if (dirty & /*topTimesText*/ 4 && t7_value !== (t7_value = /*time*/ ctx[22].numUsers + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*topTimesText*/ 4 && t10_value !== (t10_value = /*time*/ ctx[22].users + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*topTimesText*/ 4 && t7_value !== (t7_value = /*time*/ ctx[21].numUsers + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*topTimesText*/ 4 && t10_value !== (t10_value = /*time*/ ctx[21].users + "")) set_data_dev(t10, t10_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
@@ -13179,7 +13179,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 163, 4, 5986);
+    			add_location(p, file$5, 163, 4, 5794);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13283,7 +13283,7 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 21
+    		value: 20
     	};
 
     	handle_promise(promise = /*topTimesText*/ ctx[2], info);
@@ -13356,48 +13356,48 @@ var app = (function () {
     			h22.textContent = "Top Times for Everyone";
     			t36 = space();
     			info.block.c();
-    			attr_dev(h1, "class", "svelte-n0rlhk");
-    			add_location(h1, file$5, 142, 1, 4863);
-    			add_location(h20, file$5, 143, 1, 4885);
-    			add_location(h21, file$5, 146, 3, 5019);
-    			add_location(h30, file$5, 147, 21, 5073);
+    			attr_dev(h1, "class", "svelte-1a9nea4");
+    			add_location(h1, file$5, 142, 1, 4671);
+    			add_location(h20, file$5, 143, 1, 4693);
+    			add_location(h21, file$5, 146, 3, 4827);
+    			add_location(h30, file$5, 147, 21, 4881);
     			attr_dev(label, "for", "name");
-    			add_location(label, file$5, 147, 3, 5055);
+    			add_location(label, file$5, 147, 3, 4863);
     			attr_dev(input0, "id", "name");
-    			add_location(input0, file$5, 148, 3, 5099);
-    			add_location(h31, file$5, 149, 3, 5138);
-    			add_location(b0, file$5, 150, 6, 5185);
-    			add_location(b1, file$5, 150, 29, 5208);
-    			add_location(u0, file$5, 150, 75, 5254);
-    			add_location(i0, file$5, 150, 114, 5293);
-    			add_location(u1, file$5, 150, 167, 5346);
-    			add_location(i1, file$5, 150, 181, 5360);
-    			add_location(i2, file$5, 150, 201, 5380);
-    			add_location(u2, file$5, 150, 219, 5398);
-    			add_location(i3, file$5, 150, 234, 5413);
-    			add_location(p, file$5, 150, 3, 5182);
+    			add_location(input0, file$5, 148, 3, 4907);
+    			add_location(h31, file$5, 149, 3, 4946);
+    			add_location(b0, file$5, 150, 6, 4993);
+    			add_location(b1, file$5, 150, 29, 5016);
+    			add_location(u0, file$5, 150, 75, 5062);
+    			add_location(i0, file$5, 150, 114, 5101);
+    			add_location(u1, file$5, 150, 167, 5154);
+    			add_location(i1, file$5, 150, 181, 5168);
+    			add_location(i2, file$5, 150, 201, 5188);
+    			add_location(u2, file$5, 150, 219, 5206);
+    			add_location(i3, file$5, 150, 234, 5221);
+    			add_location(p, file$5, 150, 3, 4990);
     			attr_dev(textarea, "aria-label", "an input field for your availability");
     			attr_dev(textarea, "placeholder", "");
-    			attr_dev(textarea, "class", "svelte-n0rlhk");
-    			add_location(textarea, file$5, 152, 3, 5572);
-    			add_location(br0, file$5, 153, 3, 5703);
-    			add_location(br1, file$5, 153, 7, 5707);
-    			attr_dev(input1, "class", "submit svelte-n0rlhk");
+    			attr_dev(textarea, "class", "svelte-1a9nea4");
+    			add_location(textarea, file$5, 152, 3, 5380);
+    			add_location(br0, file$5, 153, 3, 5511);
+    			add_location(br1, file$5, 153, 7, 5515);
+    			attr_dev(input1, "class", "submit svelte-1a9nea4");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 154, 3, 5715);
-    			add_location(br2, file$5, 155, 3, 5788);
-    			attr_dev(div0, "class", "input-side svelte-n0rlhk");
+    			add_location(input1, file$5, 154, 3, 5523);
+    			add_location(br2, file$5, 155, 3, 5596);
+    			attr_dev(div0, "class", "input-side svelte-1a9nea4");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$5, 145, 2, 4977);
-    			add_location(h22, file$5, 161, 3, 5925);
-    			attr_dev(div1, "class", "top-times-side svelte-n0rlhk");
+    			add_location(div0, file$5, 145, 2, 4785);
+    			add_location(h22, file$5, 161, 3, 5733);
+    			attr_dev(div1, "class", "top-times-side svelte-1a9nea4");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 160, 2, 5879);
-    			attr_dev(div2, "class", "cf svelte-n0rlhk");
-    			add_location(div2, file$5, 144, 1, 4958);
-    			attr_dev(main, "class", "svelte-n0rlhk");
-    			add_location(main, file$5, 141, 0, 4855);
+    			add_location(div1, file$5, 160, 2, 5687);
+    			attr_dev(div2, "class", "cf svelte-1a9nea4");
+    			add_location(div2, file$5, 144, 1, 4766);
+    			attr_dev(main, "class", "svelte-1a9nea4");
+    			add_location(main, file$5, 141, 0, 4663);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13532,11 +13532,8 @@ var app = (function () {
     function instance$5($$self, $$props, $$invalidate) {
     	let timeArr;
     	let $storedData;
-    	let $currentUser;
     	validate_store(storedData, 'storedData');
     	component_subscribe($$self, storedData, $$value => $$invalidate(11, $storedData = $$value));
-    	validate_store(currentUser, 'currentUser');
-    	component_subscribe($$self, currentUser, $$value => $$invalidate(12, $currentUser = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('InputTimes', slots, []);
     	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -13548,15 +13545,12 @@ var app = (function () {
     	let API_BASE = 'http://localhost:3001';
     	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 
-    	// console.log(topIntervals);
-    	getTimes();
-
     	// Concepts incorporated: Rendering Times
     	let topTimesText = topTimesToText(topIntervals);
 
-    	async function topTimesToText(topIntervalsPromise) {
+    	function topTimesToText(topIntervalsPromise) {
     		// console.log({topIntervalsPromise})
-    		let topIntervals = await topIntervalsPromise;
+    		let topIntervals = topIntervalsPromise;
 
     		// console.log({topIntervals})
     		let topTimesText = [];
@@ -13627,24 +13621,23 @@ var app = (function () {
     		availableTimes = processText(text);
     	}
 
-    	async function getTimes() {
-    		const data = await (await fetch(API_BASE + '/userTimes')).json();
+    	function getTimes() {
+    		const data = $storedData;
     		return data;
     	}
 
-    	async function postTimes(username, userTimes) {
+    	function postTimes(username, userTimes) {
     		const strUserTimes = JSON.stringify(userTimes);
 
-    		const requestOptions = {
+    		({
     			method: 'POST',
     			headers: { 'Content-Type': 'application/json' },
     			body: JSON.stringify({ name: username, times: strUserTimes })
-    		};
+    		});
 
-    		const data = await (await fetch(API_BASE + '/userTimes', requestOptions)).json();
-
-    		// console.log(data)
-    		return data;
+    		const localData = { [username]: strUserTimes };
+    		storedData.set(Object.assign({}, localData, $storedData));
+    		return localData;
     	}
 
     	async function submit() {
@@ -13653,48 +13646,35 @@ var app = (function () {
     		} else {
     			availableTimes = processText(text);
     			postTimes(name, availableTimes);
-    			let userTimes = await getAllUserTimes(true);
+    			let userTimes = getAllUserTimes(true);
     			$$invalidate(2, topTimesText = topTimesToText(getTopNIntervals(userTimes, 5)));
+    			console.log("topn");
+    			console.log(getTopNIntervals(userTimes, 5));
     			currentUser.set(name);
-
-    			storedData.set(Object.assign(
-    				{},
-    				{
-    					[name]: userTimes[userTimes.length - 1]["times"]
-    				},
-    				$storedData
-    			));
-
     			$$invalidate(1, name = '');
     			$$invalidate(0, text = '');
+    			console.log("top times text");
+    			console.log(topTimesText);
     		}
-
-    		// window.location.reload();
-    		console.log("stored Data");
-
-    		console.log($storedData);
-    		console.log($currentUser);
     	}
 
     	// Concepts incorporated: User
-    	async function getAllUserTimes(allInfo = false) {
+    	function getAllUserTimes(allInfo = false) {
     		let userTimes = [];
-    		let payload = await getTimes();
+    		let payload = getTimes();
+    		console.log("payday");
+    		console.log({ payload });
 
-    		// console.log({payload})
-    		for (let i = 0; i < payload.length; i++) {
-    			// console.log(`getting user times: ${JSON.parse(payload[i].times)}`)
+    		for (let i = 0; i < Object.keys(payload).length; i++) {
     			if (allInfo) {
     				userTimes.push({
-    					name: payload[i].name,
-    					times: JSON.parse(payload[i].times)
+    					name: Object.keys(payload)[i],
+    					times: payload[Object.keys(payload)[i]]
     				});
     			} else {
-    				userTimes.push(JSON.parse(payload[i].times));
+    				userTimes.push(payload[Object.keys(payload)[i]]);
     			}
     		}
-
-    		// console.log(userTimes)
     		return userTimes;
     	}
     	console.log($storedData);
@@ -13744,8 +13724,7 @@ var app = (function () {
     		submit,
     		getAllUserTimes,
     		timeArr,
-    		$storedData,
-    		$currentUser
+    		$storedData
     	});
 
     	$$self.$inject_state = $$props => {
