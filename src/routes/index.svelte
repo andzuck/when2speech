@@ -3,6 +3,7 @@
   import InputTimes from '../components/InputTimes.svelte';
   import NewEvent from '../components/NewEvent.svelte';
   import HomePage from '../components/HomePage.svelte';
+  import ExistingEvent from '../components/ExistingEvent.svelte';
 
   export let url = '';
 </script>
@@ -13,6 +14,7 @@
   <div>
     <Route path="input" component={InputTimes} />
     <Route path="new" component={NewEvent} />
+    <Route path="/existing" component={ExistingEvent} />
     <Route path="/" component={HomePage} />
   </div>
 </Router>
