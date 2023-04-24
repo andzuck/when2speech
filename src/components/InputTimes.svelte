@@ -103,12 +103,15 @@
 			postTimes(name, availableTimes);
 			let userTimes = await getAllUserTimes(true);
 			topTimesText = topTimesToText(getTopNIntervals(userTimes, 5));
-			storedData.set($storedData.concat(userTimes[userTimes.length - 1]["times"]));
+			currentUser.set(name);
+			storedData.set(Object.assign({}, {[name]: userTimes[userTimes.length - 1]["times"]}, $storedData));
 			name = '';
 			text = '';
 		}
 		// window.location.reload();
-		console.log($storedData);
+		 console.log("stored Data");
+		 console.log($storedData);
+		 console.log($currentUser);
 		
 	};
 
