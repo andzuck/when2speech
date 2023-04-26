@@ -12,8 +12,8 @@
 
 <Router {url}>
   <div>
-    <Route path="input" component={InputTimes} />
-    <Route path="new" component={NewEvent} />
+    <Route path="/input" component={InputTimes} />
+    <Route path="/new" component={NewEvent} />
     <Route path="/existing" component={ExistingEvent} />
     <Route path="/" component={HomePage} />
   </div>

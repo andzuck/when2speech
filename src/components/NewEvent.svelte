@@ -2,11 +2,41 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </svelte:head>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
-    let eventName = '';
-	let startDate = '';
-	let endDate = '';
-	let timeZone = '';
-  export let onNewEvent;
+  let eventName = '';
+	let dateRange = '';
+	let timeZone = '-05:00';
+
+  // Validation/Submission from https://svelte.dev/repl/5230b1d71f1b4b048cf05e3a7a49aefc?version=3.24.0
+  import {fly, fade } from 'svelte/transition';
+  import jQuery from 'jquery';
+  import { onMount } from 'svelte';
+	let hasError = false;
+	let isSuccessVisible = false;
+	let submitted = false;
+	
+	const errMessage = "Please fill out all fields.";	
+	
+  // const datepicker = jQuery('#date-range');
+  onMount(() => {
+    const datepicker = document.getElementById('date-range');
+    console.log(datepicker);
+    datepicker.addEventListener('selectDate', function(event) {
+      dateRange = event.detail;
+    });
+  });
+
+	function handleSubmit(e) {
+    console.log(eventName);
+    console.log(dateRange);
+    console.log(timeZone);
+		
+    if (!eventName || !dateRange || dateRange.length == 0 || !timeZone) {
+      hasError = true;
+    }
+    else {
+      hasError = false;
+    }
+	}
 </script>
 <head>
   <script
@@ -23,9 +53,15 @@
 
 <main>
     <h1>Create New Event</h1>
+
+    {#if hasError == true}
+        <p class="error-alert">{errMessage}</p>
+    {/if}
+
+    <form class:submitted on:submit|preventDefault={handleSubmit}>
     <div class="form-element">
         <div><label for="event-name"><h2>Event Name</h2></label></div>
-        <input id="event-name" bind:value={eventName}>
+        <input class="form-control" required id="event-name" bind:value={eventName}>
     </div>
     <div class="form-element">
         <div><label for="date-range"><h2>Choose a Date Range</h2></label></div>
@@ -34,7 +70,7 @@
     <div class="form-element">
         <div><label for="time-zone-offset"><h2>Time Zone</h2></label></div>
         <!-- Taken from https://gist.github.com/nodesocket/3919205 -->
-        <select name="timezone_offset" id="timezone-offset" class="span5">
+        <select name="timezone_offset" id="timezone-offset" class="span5" bind:value={timeZone}>
             <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
             <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
             <option value="-10:00">(GMT -10:00) Hawaii</option>
@@ -77,8 +113,9 @@
             <option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
         </select>
     </div>
-    <button type="button" class="btn btn-primary btn-lg">Create Event</button>
-</main>
+    <button type="submit" class="btn btn-primary btn-lg" on:click={() => submitted = true}>Create Event</button>
+    </form>
+  </main>
 
 <style>
   .form-element {
@@ -94,4 +131,25 @@
     height: 0px;
     margin: 0px
   }
+
+  #event-name {
+    max-width: 250px;
+    margin: auto;
+  }
+
+  .submitted input:invalid {
+		border: 1px solid #c00;
+	}
+
+	.submitted input:focus:invalid {
+		outline: 1px solid #c00;
+	}
+	
+	.error-alert {
+		border: 1px solid #c00 !important;
+		padding: 6px;
+		text-align: center;
+		color: #c00;
+		border-radius: 3px;
+	}
 </style>
