@@ -102,14 +102,14 @@
 			availableTimes = processText(text);
 			postTimes(name, availableTimes);
 			let userTimes = getAllUserTimes(true);
+			console.log("utimes");
+			console.log(userTimes);
 			topTimesText = topTimesToText(getTopNIntervals(userTimes, 5));
 			console.log("topn");
-			console.log(getTopNIntervals(userTimes, 5));
+			console.log(topTimesText);
 			currentUser.set(name);
 			name = '';
 			text = '';
-			console.log("top times text");
-			console.log(topTimesText);
 		}
 		
 	};
@@ -134,8 +134,33 @@
 		return userTimes
 	};
 
+	async function presubmit() {
+		if (name ===''){
+			alert('please include name!')
+		}
+		else{
+			availableTimes = processText(text);
+			document.getElementById("confirmation").value = render(availableTimes);
+		
+	}}
+
+	// [["2023-05-03T19:00:00.000Z","2023-05-04T04:00:00.000Z"]]
+	function render(available) {
+	    let a = "";
+		for (let i = 0; i < Object.keys(available).length; i++) {
+			let k = Object.keys(available)[i];
+			let v = available[k];
+			for (let j = 0; j < v.length; j++) {
+				let start = v[j][0]
+				let end = v[j][1];
+				a += start + " to " + end + "\n";
+			}
+		}
+		return a;
+	}
+
 	$: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
-	console.log($storedData);
+	// console.log($storedData);
 
 </script>
 
@@ -148,12 +173,19 @@
 			<label for="name"><h3>Name?</h3></label>
 			<input id="name" bind:value={name}>
 			<h3>When are you available to meet?</h3>
-			<p><b>Voice Record</b> or <b>Type</b> your availability. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
+			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea aria-label="an input field for your availability" bind:value={text} on:input={handleInput} placeholder=""></textarea>
-			<br><br>
-			<input class="submit" type="button" value="Submit" on:click={submit}>
 			<br>
+			<input class="submit" type="button" value="Submit" on:click={presubmit}>
+			<br>
+			<label for="confirmation"><h3>Parsed Availability</h3></label>
+			<p>Here's what we got from you. Make any changes by editing the box above and pressing "Submit" again.</p>
+			<textarea id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
+			<br>
+			<input class="submit" type="button" value="Submit Final Response" on:click={submit}>
+			<br>
+			
 
 			<!-- <Table timeArr = {makeTimeArr(processText(text))}></Table> -->
 		</div>

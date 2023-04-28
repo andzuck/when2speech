@@ -12966,7 +12966,7 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
+    	child_ctx[22] = list[i];
     	return child_ctx;
     }
 
@@ -12985,10 +12985,10 @@ var app = (function () {
     	return block;
     }
 
-    // (165:3) {:then topTimes}
+    // (197:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
-    	let each_value = /*topTimes*/ ctx[20];
+    	let each_value = /*topTimes*/ ctx[21];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -13013,7 +13013,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*topTimesText, dayArr*/ 12) {
-    				each_value = /*topTimes*/ ctx[20];
+    				each_value = /*topTimes*/ ctx[21];
     				validate_each_argument(each_value);
     				let i;
 
@@ -13046,38 +13046,38 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(165:3) {:then topTimes}",
+    		source: "(197:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (166:3) {#each topTimes as time}
+    // (198:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
     	let b;
     	let time;
-    	let t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[21].day] + "";
+    	let t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "";
     	let t0;
     	let t1;
-    	let t2_value = /*time*/ ctx[21].startTime + "";
+    	let t2_value = /*time*/ ctx[22].startTime + "";
     	let t2;
     	let t3;
-    	let t4_value = /*time*/ ctx[21].endTime + "";
+    	let t4_value = /*time*/ ctx[22].endTime + "";
     	let t4;
     	let time_aria_label_value;
     	let t5;
     	let br0;
     	let t6;
     	let u;
-    	let t7_value = /*time*/ ctx[21].numUsers + "";
+    	let t7_value = /*time*/ ctx[22].numUsers + "";
     	let t7;
     	let t8;
     	let br1;
     	let t9;
-    	let t10_value = /*time*/ ctx[21].users + "";
+    	let t10_value = /*time*/ ctx[22].users + "";
     	let t10;
     	let t11;
     	let t12;
@@ -13107,16 +13107,16 @@ var app = (function () {
     			t12 = space();
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
-    			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[21].accessibleTime);
-    			add_location(time, file$5, 167, 11, 5909);
-    			add_location(b, file$5, 167, 8, 5906);
-    			add_location(br0, file$5, 168, 5, 6029);
-    			add_location(u, file$5, 169, 5, 6039);
-    			add_location(br1, file$5, 169, 34, 6068);
-    			add_location(p, file$5, 167, 5, 5903);
+    			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[22].accessibleTime);
+    			add_location(time, file$5, 199, 11, 6895);
+    			add_location(b, file$5, 199, 8, 6892);
+    			add_location(br0, file$5, 200, 5, 7015);
+    			add_location(u, file$5, 201, 5, 7025);
+    			add_location(br1, file$5, 201, 34, 7054);
+    			add_location(p, file$5, 199, 5, 6889);
     			attr_dev(div, "class", "top-time svelte-1a9nea4");
-    			add_location(div, file$5, 166, 4, 5873);
-    			add_location(br2, file$5, 172, 4, 6112);
+    			add_location(div, file$5, 198, 4, 6859);
+    			add_location(br2, file$5, 204, 4, 7098);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13142,16 +13142,16 @@ var app = (function () {
     			insert_dev(target, br2, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*topTimesText*/ 4 && t0_value !== (t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[21].day] + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*topTimesText*/ 4 && t2_value !== (t2_value = /*time*/ ctx[21].startTime + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*topTimesText*/ 4 && t4_value !== (t4_value = /*time*/ ctx[21].endTime + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*topTimesText*/ 4 && t0_value !== (t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*topTimesText*/ 4 && t2_value !== (t2_value = /*time*/ ctx[22].startTime + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*topTimesText*/ 4 && t4_value !== (t4_value = /*time*/ ctx[22].endTime + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*topTimesText*/ 4 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[21].accessibleTime)) {
+    			if (dirty & /*topTimesText*/ 4 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[22].accessibleTime)) {
     				attr_dev(time, "aria-label", time_aria_label_value);
     			}
 
-    			if (dirty & /*topTimesText*/ 4 && t7_value !== (t7_value = /*time*/ ctx[21].numUsers + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*topTimesText*/ 4 && t10_value !== (t10_value = /*time*/ ctx[21].users + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*topTimesText*/ 4 && t7_value !== (t7_value = /*time*/ ctx[22].numUsers + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*topTimesText*/ 4 && t10_value !== (t10_value = /*time*/ ctx[22].users + "")) set_data_dev(t10, t10_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
@@ -13164,14 +13164,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(166:3) {#each topTimes as time}",
+    		source: "(198:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (163:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (195:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13179,7 +13179,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 163, 4, 5794);
+    			add_location(p, file$5, 195, 4, 6780);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13194,7 +13194,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(163:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(195:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13211,14 +13211,14 @@ var app = (function () {
     	let div0;
     	let h21;
     	let t5;
-    	let label;
+    	let label0;
     	let h30;
     	let t7;
     	let input0;
     	let t8;
     	let h31;
     	let t10;
-    	let p;
+    	let p0;
     	let b0;
     	let t12;
     	let b1;
@@ -13241,25 +13241,37 @@ var app = (function () {
     	let voicerecognition;
     	let updating_noteContent;
     	let t30;
-    	let textarea;
+    	let textarea0;
     	let t31;
     	let br0;
-    	let br1;
     	let t32;
     	let input1;
     	let t33;
-    	let br2;
+    	let br1;
     	let t34;
+    	let label1;
+    	let h32;
+    	let t36;
+    	let p1;
+    	let t38;
+    	let textarea1;
+    	let t39;
+    	let br2;
+    	let t40;
+    	let input2;
+    	let t41;
+    	let br3;
+    	let t42;
     	let div1;
     	let h22;
-    	let t36;
+    	let t44;
     	let promise;
     	let current;
     	let mounted;
     	let dispose;
 
     	function voicerecognition_noteContent_binding(value) {
-    		/*voicerecognition_noteContent_binding*/ ctx[7](value);
+    		/*voicerecognition_noteContent_binding*/ ctx[8](value);
     	}
 
     	let voicerecognition_props = {};
@@ -13283,7 +13295,7 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 20
+    		value: 21
     	};
 
     	handle_promise(promise = /*topTimesText*/ ctx[2], info);
@@ -13302,7 +13314,7 @@ var app = (function () {
     			h21 = element("h2");
     			h21.textContent = "Share Your Availability";
     			t5 = space();
-    			label = element("label");
+    			label0 = element("label");
     			h30 = element("h3");
     			h30.textContent = "Name?";
     			t7 = space();
@@ -13311,13 +13323,13 @@ var app = (function () {
     			h31 = element("h3");
     			h31.textContent = "When are you available to meet?";
     			t10 = space();
-    			p = element("p");
+    			p0 = element("p");
     			b0 = element("b");
     			b0.textContent = "Voice Record";
     			t12 = text(" or ");
     			b1 = element("b");
     			b1.textContent = "Type";
-    			t14 = text(" your availability. Start with the ");
+    			t14 = text(" your availability into the box below. Start with the ");
     			u0 = element("u");
     			u0.textContent = "day of the week";
     			t16 = text(" followed by the ");
@@ -13342,62 +13354,90 @@ var app = (function () {
     			t29 = space();
     			create_component(voicerecognition.$$.fragment);
     			t30 = space();
-    			textarea = element("textarea");
+    			textarea0 = element("textarea");
     			t31 = space();
     			br0 = element("br");
-    			br1 = element("br");
     			t32 = space();
     			input1 = element("input");
     			t33 = space();
-    			br2 = element("br");
+    			br1 = element("br");
     			t34 = space();
+    			label1 = element("label");
+    			h32 = element("h3");
+    			h32.textContent = "Parsed Availability";
+    			t36 = space();
+    			p1 = element("p");
+    			p1.textContent = "Here's what we got from you. Make any changes by editing the box above and pressing \"Submit\" again.";
+    			t38 = space();
+    			textarea1 = element("textarea");
+    			t39 = space();
+    			br2 = element("br");
+    			t40 = space();
+    			input2 = element("input");
+    			t41 = space();
+    			br3 = element("br");
+    			t42 = space();
     			div1 = element("div");
     			h22 = element("h2");
     			h22.textContent = "Top Times for Everyone";
-    			t36 = space();
+    			t44 = space();
     			info.block.c();
     			attr_dev(h1, "class", "svelte-1a9nea4");
-    			add_location(h1, file$5, 142, 1, 4671);
-    			add_location(h20, file$5, 143, 1, 4693);
-    			add_location(h21, file$5, 146, 3, 4827);
-    			add_location(h30, file$5, 147, 21, 4881);
-    			attr_dev(label, "for", "name");
-    			add_location(label, file$5, 147, 3, 4863);
+    			add_location(h1, file$5, 167, 1, 5243);
+    			add_location(h20, file$5, 168, 1, 5265);
+    			add_location(h21, file$5, 171, 3, 5399);
+    			add_location(h30, file$5, 172, 21, 5453);
+    			attr_dev(label0, "for", "name");
+    			add_location(label0, file$5, 172, 3, 5435);
     			attr_dev(input0, "id", "name");
-    			add_location(input0, file$5, 148, 3, 4907);
-    			add_location(h31, file$5, 149, 3, 4946);
-    			add_location(b0, file$5, 150, 6, 4993);
-    			add_location(b1, file$5, 150, 29, 5016);
-    			add_location(u0, file$5, 150, 75, 5062);
-    			add_location(i0, file$5, 150, 114, 5101);
-    			add_location(u1, file$5, 150, 167, 5154);
-    			add_location(i1, file$5, 150, 181, 5168);
-    			add_location(i2, file$5, 150, 201, 5188);
-    			add_location(u2, file$5, 150, 219, 5206);
-    			add_location(i3, file$5, 150, 234, 5221);
-    			add_location(p, file$5, 150, 3, 4990);
-    			attr_dev(textarea, "aria-label", "an input field for your availability");
-    			attr_dev(textarea, "placeholder", "");
-    			attr_dev(textarea, "class", "svelte-1a9nea4");
-    			add_location(textarea, file$5, 152, 3, 5380);
-    			add_location(br0, file$5, 153, 3, 5511);
-    			add_location(br1, file$5, 153, 7, 5515);
+    			add_location(input0, file$5, 173, 3, 5479);
+    			add_location(h31, file$5, 174, 3, 5518);
+    			add_location(b0, file$5, 175, 6, 5565);
+    			add_location(b1, file$5, 175, 29, 5588);
+    			add_location(u0, file$5, 175, 94, 5653);
+    			add_location(i0, file$5, 175, 133, 5692);
+    			add_location(u1, file$5, 175, 186, 5745);
+    			add_location(i1, file$5, 175, 200, 5759);
+    			add_location(i2, file$5, 175, 220, 5779);
+    			add_location(u2, file$5, 175, 238, 5797);
+    			add_location(i3, file$5, 175, 253, 5812);
+    			add_location(p0, file$5, 175, 3, 5562);
+    			attr_dev(textarea0, "aria-label", "an input field for your availability");
+    			attr_dev(textarea0, "placeholder", "");
+    			attr_dev(textarea0, "class", "svelte-1a9nea4");
+    			add_location(textarea0, file$5, 177, 3, 5971);
+    			add_location(br0, file$5, 178, 3, 6102);
     			attr_dev(input1, "class", "submit svelte-1a9nea4");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 154, 3, 5523);
-    			add_location(br2, file$5, 155, 3, 5596);
+    			add_location(input1, file$5, 179, 3, 6110);
+    			add_location(br1, file$5, 180, 3, 6186);
+    			add_location(h32, file$5, 181, 29, 6220);
+    			attr_dev(label1, "for", "confirmation");
+    			add_location(label1, file$5, 181, 3, 6194);
+    			add_location(p1, file$5, 182, 3, 6260);
+    			attr_dev(textarea1, "id", "confirmation");
+    			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
+    			attr_dev(textarea1, "placeholder", "");
+    			attr_dev(textarea1, "class", "svelte-1a9nea4");
+    			add_location(textarea1, file$5, 183, 3, 6370);
+    			add_location(br2, file$5, 184, 3, 6482);
+    			attr_dev(input2, "class", "submit svelte-1a9nea4");
+    			attr_dev(input2, "type", "button");
+    			input2.value = "Submit Final Response";
+    			add_location(input2, file$5, 185, 3, 6490);
+    			add_location(br3, file$5, 186, 3, 6578);
     			attr_dev(div0, "class", "input-side svelte-1a9nea4");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$5, 145, 2, 4785);
-    			add_location(h22, file$5, 161, 3, 5733);
+    			add_location(div0, file$5, 170, 2, 5357);
+    			add_location(h22, file$5, 193, 3, 6719);
     			attr_dev(div1, "class", "top-times-side svelte-1a9nea4");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 160, 2, 5687);
+    			add_location(div1, file$5, 192, 2, 6673);
     			attr_dev(div2, "class", "cf svelte-1a9nea4");
-    			add_location(div2, file$5, 144, 1, 4766);
+    			add_location(div2, file$5, 169, 1, 5338);
     			attr_dev(main, "class", "svelte-1a9nea4");
-    			add_location(main, file$5, 141, 0, 4663);
+    			add_location(main, file$5, 166, 0, 5235);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13412,49 +13452,61 @@ var app = (function () {
     			append_dev(div2, div0);
     			append_dev(div0, h21);
     			append_dev(div0, t5);
-    			append_dev(div0, label);
-    			append_dev(label, h30);
+    			append_dev(div0, label0);
+    			append_dev(label0, h30);
     			append_dev(div0, t7);
     			append_dev(div0, input0);
     			set_input_value(input0, /*name*/ ctx[1]);
     			append_dev(div0, t8);
     			append_dev(div0, h31);
     			append_dev(div0, t10);
-    			append_dev(div0, p);
-    			append_dev(p, b0);
-    			append_dev(p, t12);
-    			append_dev(p, b1);
-    			append_dev(p, t14);
-    			append_dev(p, u0);
-    			append_dev(p, t16);
-    			append_dev(p, i0);
-    			append_dev(p, t18);
-    			append_dev(p, u1);
-    			append_dev(p, t20);
-    			append_dev(p, i1);
-    			append_dev(p, t22);
-    			append_dev(p, i2);
-    			append_dev(p, t24);
-    			append_dev(p, u2);
-    			append_dev(p, t26);
-    			append_dev(p, i3);
-    			append_dev(p, t28);
+    			append_dev(div0, p0);
+    			append_dev(p0, b0);
+    			append_dev(p0, t12);
+    			append_dev(p0, b1);
+    			append_dev(p0, t14);
+    			append_dev(p0, u0);
+    			append_dev(p0, t16);
+    			append_dev(p0, i0);
+    			append_dev(p0, t18);
+    			append_dev(p0, u1);
+    			append_dev(p0, t20);
+    			append_dev(p0, i1);
+    			append_dev(p0, t22);
+    			append_dev(p0, i2);
+    			append_dev(p0, t24);
+    			append_dev(p0, u2);
+    			append_dev(p0, t26);
+    			append_dev(p0, i3);
+    			append_dev(p0, t28);
     			append_dev(div0, t29);
     			mount_component(voicerecognition, div0, null);
     			append_dev(div0, t30);
-    			append_dev(div0, textarea);
-    			set_input_value(textarea, /*text*/ ctx[0]);
+    			append_dev(div0, textarea0);
+    			set_input_value(textarea0, /*text*/ ctx[0]);
     			append_dev(div0, t31);
     			append_dev(div0, br0);
-    			append_dev(div0, br1);
     			append_dev(div0, t32);
     			append_dev(div0, input1);
     			append_dev(div0, t33);
+    			append_dev(div0, br1);
+    			append_dev(div0, t34);
+    			append_dev(div0, label1);
+    			append_dev(label1, h32);
+    			append_dev(div0, t36);
+    			append_dev(div0, p1);
+    			append_dev(div0, t38);
+    			append_dev(div0, textarea1);
+    			append_dev(div0, t39);
     			append_dev(div0, br2);
-    			append_dev(div2, t34);
+    			append_dev(div0, t40);
+    			append_dev(div0, input2);
+    			append_dev(div0, t41);
+    			append_dev(div0, br3);
+    			append_dev(div2, t42);
     			append_dev(div2, div1);
     			append_dev(div1, h22);
-    			append_dev(div1, t36);
+    			append_dev(div1, t44);
     			info.block.m(div1, info.anchor = null);
     			info.mount = () => div1;
     			info.anchor = null;
@@ -13462,10 +13514,11 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[6]),
-    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[8]),
-    					listen_dev(textarea, "input", /*handleInput*/ ctx[4], false, false, false),
-    					listen_dev(input1, "click", /*submit*/ ctx[5], false, false, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
+    					listen_dev(textarea0, "input", /*textarea0_input_handler*/ ctx[9]),
+    					listen_dev(textarea0, "input", /*handleInput*/ ctx[4], false, false, false),
+    					listen_dev(input1, "click", /*presubmit*/ ctx[6], false, false, false),
+    					listen_dev(input2, "click", /*submit*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
@@ -13489,7 +13542,7 @@ var app = (function () {
     			voicerecognition.$set(voicerecognition_changes);
 
     			if (dirty & /*text*/ 1) {
-    				set_input_value(textarea, /*text*/ ctx[0]);
+    				set_input_value(textarea0, /*text*/ ctx[0]);
     			}
 
     			info.ctx = ctx;
@@ -13529,11 +13582,28 @@ var app = (function () {
     	return block;
     }
 
+    function render(available) {
+    	let a = "";
+
+    	for (let i = 0; i < Object.keys(available).length; i++) {
+    		let k = Object.keys(available)[i];
+    		let v = available[k];
+
+    		for (let j = 0; j < v.length; j++) {
+    			let start = v[j][0];
+    			let end = v[j][1];
+    			a += start + " to " + end + "\n";
+    		}
+    	}
+
+    	return a;
+    }
+
     function instance$5($$self, $$props, $$invalidate) {
     	let timeArr;
     	let $storedData;
     	validate_store(storedData, 'storedData');
-    	component_subscribe($$self, storedData, $$value => $$invalidate(11, $storedData = $$value));
+    	component_subscribe($$self, storedData, $$value => $$invalidate(12, $storedData = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('InputTimes', slots, []);
     	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -13647,14 +13717,14 @@ var app = (function () {
     			availableTimes = processText(text);
     			postTimes(name, availableTimes);
     			let userTimes = getAllUserTimes(true);
+    			console.log("utimes");
+    			console.log(userTimes);
     			$$invalidate(2, topTimesText = topTimesToText(getTopNIntervals(userTimes, 5)));
     			console.log("topn");
-    			console.log(getTopNIntervals(userTimes, 5));
+    			console.log(topTimesText);
     			currentUser.set(name);
     			$$invalidate(1, name = '');
     			$$invalidate(0, text = '');
-    			console.log("top times text");
-    			console.log(topTimesText);
     		}
     	}
 
@@ -13677,7 +13747,16 @@ var app = (function () {
     		}
     		return userTimes;
     	}
-    	console.log($storedData);
+
+    	async function presubmit() {
+    		if (name === '') {
+    			alert('please include name!');
+    		} else {
+    			availableTimes = processText(text);
+    			document.getElementById("confirmation").value = render(availableTimes);
+    		}
+    	}
+
     	const writable_props = [];
 
     	Object_1.keys($$props).forEach(key => {
@@ -13694,7 +13773,7 @@ var app = (function () {
     		$$invalidate(0, text);
     	}
 
-    	function textarea_input_handler() {
+    	function textarea0_input_handler() {
     		text = this.value;
     		$$invalidate(0, text);
     	}
@@ -13723,6 +13802,8 @@ var app = (function () {
     		postTimes,
     		submit,
     		getAllUserTimes,
+    		presubmit,
+    		render,
     		timeArr,
     		$storedData
     	});
@@ -13758,9 +13839,10 @@ var app = (function () {
     		dayArr,
     		handleInput,
     		submit,
+    		presubmit,
     		input0_input_handler,
     		voicerecognition_noteContent_binding,
-    		textarea_input_handler
+    		textarea0_input_handler
     	];
     }
 
