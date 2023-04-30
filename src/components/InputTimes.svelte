@@ -5,8 +5,7 @@
 	import { storedData, currentUser } from '../stores.js';
 
 	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-	let voiceText = '';
-	let typedText = '';
+	export let eventID;
 	let name = '';
 	let text = '';
 	let availableTimes = null;
@@ -72,17 +71,20 @@
 	};
 
 	// Concepts incorporated: Time Text Description
-	function handleInput() {
-		availableTimes = processText(text);
-	};
+	// function handleInput() {
+	// 	availableTimes = processText(text);
+	// };
 
 
 	function getTimes(){
 		const data = $storedData;
+		console.log('in get times. data:');
+		console.log(data);
 		return data
 	}
 
 	function postTimes(username, userTimes){
+		console.log('in post times')
 		const strUserTimes = JSON.stringify(userTimes);
 		const requestOptions = {
 			method: 'POST',
@@ -90,6 +92,7 @@
 			body: JSON.stringify({name: username, times: strUserTimes})
 		}
 		const localData = {[username]: strUserTimes}
+		console.log(localData);
 		storedData.set(Object.assign({}, localData, $storedData));
 		return localData
 	}
@@ -110,6 +113,7 @@
 			currentUser.set(name);
 			name = '';
 			text = '';
+			document.getElementById("confirmation").value = '';
 		}
 		
 	};
@@ -142,46 +146,54 @@
 			availableTimes = processText(text);
 			document.getElementById("confirmation").value = render(availableTimes);
 		
-	}}
+		}
+	}
 
 	// [["2023-05-03T19:00:00.000Z","2023-05-04T04:00:00.000Z"]]
 	function render(available) {
+		console.log(available);
 	    let a = "";
 		for (let i = 0; i < Object.keys(available).length; i++) {
 			let k = Object.keys(available)[i];
 			let v = available[k];
 			for (let j = 0; j < v.length; j++) {
-				let start = v[j][0]
-				let end = v[j][1];
-				a += start + " to " + end + "\n";
+				let start = String(v[j][0]);
+				let end = String(v[j][1]);
+				// remove timezone from confirmation text
+				console.log(start);
+				console.log(end);
+				start = start.substring(0, start.indexOf(" ("));
+				end = end.substring(0, end.indexOf(" ("));
+				a += start + " to " + end + ",\n";
 			}
 		}
 		return a;
 	}
 
-	$: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
+	// $: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
 	// console.log($storedData);
 
 </script>
 
 <main>
 	<h1>When2Speech</h1>
-	<h2>A speech and text based way to find times to meet with others.</h2>
+	<h3>A speech and text based way to find times to meet with others.</h3>
 	<div class="cf">
 		<div class="input-side" role="region">
+			<h2>Event {eventID}</h2>
 			<h2>Share Your Availability</h2>
 			<label for="name"><h3>Name?</h3></label>
 			<input id="name" bind:value={name}>
 			<h3>When are you available to meet?</h3>
 			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
-			<textarea aria-label="an input field for your availability" bind:value={text} on:input={handleInput} placeholder=""></textarea>
+			<textarea aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
 			<input class="submit" type="button" value="Submit" on:click={presubmit}>
 			<br>
 			<label for="confirmation"><h3>Parsed Availability</h3></label>
-			<p>Here's what we got from you. Make any changes by editing the box above and pressing "Submit" again.</p>
-			<textarea id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
+			<p>Here's what we got. Make any changes by editing the box above and pressing "Submit" again.</p>
+			<textarea readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
 			<input class="submit" type="button" value="Submit Final Response" on:click={submit}>
 			<br>
