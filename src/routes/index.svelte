@@ -14,19 +14,10 @@
   <div>
     <!-- <Route path="/event" component={InputTimes} /> -->
     <Route path="/new" component={NewEvent} />
-    <Route path="/existing" component={ExistingEvent} />
     <Route path="/" component={HomePage} />
 
     <Route path="/:id" let:params>
       <InputTimes eventID={params.id}></InputTimes>
-      <!-- {#await fetch(`/api/objects/${params.id}`).then(res => res.json())}
-        <p>Loading...</p>
-      {:then object}
-        <h1>{object.name}</h1>
-        <p>{object.description}</p>
-      {:catch error}
-        <p>Error: {error.message}</p>
-      {/await} -->
     </Route>
 
   </div>

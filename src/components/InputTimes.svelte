@@ -15,7 +15,6 @@
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 	// console.log(topIntervals);
 	getTimes();
-	
 
 	// Concepts incorporated: Rendering Times
 	let topTimesText = topTimesToText(topIntervals);
