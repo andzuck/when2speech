@@ -11,6 +11,8 @@
 	let availableTimes = null;
 	let API_BASE = 'http://localhost:3001';
 	import accessibleDate from 'accessible-date';
+	let presubmitted = false;
+	let editedAfterPresubmit = true;
 
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 	// console.log(topIntervals);
@@ -143,8 +145,12 @@
 			alert('please include name!')
 		}
 		else{
+			presubmitted = true;
+			editedAfterPresubmit = false;
 			availableTimes = processText(text);
 			document.getElementById("confirmation").value = render(availableTimes);
+			document.getElementById("confirmation").style.backgroundColor = "white";
+			document.getElementById("edited").innerText = "";
 		
 		}
 	}
@@ -170,6 +176,15 @@
 		return a;
 	}
 
+	function retro() {
+		console.log("retro called");
+		editedAfterPresubmit = true;
+		if (presubmitted && editedAfterPresubmit) {
+			console.log("retro really called");
+			document.getElementById("confirmation").style.backgroundColor = "#D3D3D3";
+			document.getElementById("edited").innerText = "Parse is no longer accurate because input has been edited since \"Submit\" was last pressed. To regenerate parsed times, press \"Submit\" again.";
+		}
+	}
 	// $: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
 	// console.log($storedData);
 
@@ -187,14 +202,15 @@
 			<h3>When are you available to meet?</h3>
 			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
-			<textarea aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
+			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
 			<input class="submit" type="button" value="Submit" on:click={presubmit}>
 			<br>
 			<label for="confirmation"><h3>Parsed Availability</h3></label>
 			<p>Here's what we got. Make any changes by editing the box above and pressing "Submit" again.</p>
-			<textarea readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
+			<textarea style="background-color:white" readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
+			<p id="edited"></p>
 			<input class="submit" type="button" value="Submit Final Response" on:click={submit}>
 			<br>
 			
@@ -290,4 +306,5 @@
 	.cf {
 	    *zoom: 1;
 	}
+
 </style>

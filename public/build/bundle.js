@@ -175,6 +175,14 @@ var app = (function () {
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
     }
+    function set_style(node, key, value, important) {
+        if (value === null) {
+            node.style.removeProperty(key);
+        }
+        else {
+            node.style.setProperty(key, value, important ? 'important' : '');
+        }
+    }
     function select_option(select, value) {
         for (let i = 0; i < select.options.length; i += 1) {
             const option = select.options[i];
@@ -13007,7 +13015,7 @@ var app = (function () {
     	return block;
     }
 
-    // (197:3) {:then topTimes}
+    // (225:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*topTimes*/ ctx[21];
@@ -13034,7 +13042,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*topTimesText, dayArr*/ 12) {
+    			if (dirty & /*topTimesText, dayArr*/ 24) {
     				each_value = /*topTimes*/ ctx[21];
     				validate_each_argument(each_value);
     				let i;
@@ -13068,20 +13076,20 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(197:3) {:then topTimes}",
+    		source: "(225:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (198:3) {#each topTimes as time}
+    // (226:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
     	let b;
     	let time;
-    	let t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "";
+    	let t0_value = /*dayArr*/ ctx[4][/*time*/ ctx[22].day] + "";
     	let t0;
     	let t1;
     	let t2_value = /*time*/ ctx[22].startTime + "";
@@ -13130,15 +13138,15 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[22].accessibleTime);
-    			add_location(time, file$5, 199, 11, 6895);
-    			add_location(b, file$5, 199, 8, 6892);
-    			add_location(br0, file$5, 200, 5, 7015);
-    			add_location(u, file$5, 201, 5, 7025);
-    			add_location(br1, file$5, 201, 34, 7054);
-    			add_location(p, file$5, 199, 5, 6889);
-    			attr_dev(div, "class", "top-time svelte-1a9nea4");
-    			add_location(div, file$5, 198, 4, 6859);
-    			add_location(br2, file$5, 204, 4, 7098);
+    			add_location(time, file$5, 227, 11, 8068);
+    			add_location(b, file$5, 227, 8, 8065);
+    			add_location(br0, file$5, 228, 5, 8188);
+    			add_location(u, file$5, 229, 5, 8198);
+    			add_location(br1, file$5, 229, 34, 8227);
+    			add_location(p, file$5, 227, 5, 8062);
+    			attr_dev(div, "class", "top-time svelte-n0rlhk");
+    			add_location(div, file$5, 226, 4, 8032);
+    			add_location(br2, file$5, 232, 4, 8271);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13164,16 +13172,16 @@ var app = (function () {
     			insert_dev(target, br2, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*topTimesText*/ 4 && t0_value !== (t0_value = /*dayArr*/ ctx[3][/*time*/ ctx[22].day] + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*topTimesText*/ 4 && t2_value !== (t2_value = /*time*/ ctx[22].startTime + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*topTimesText*/ 4 && t4_value !== (t4_value = /*time*/ ctx[22].endTime + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*topTimesText*/ 8 && t0_value !== (t0_value = /*dayArr*/ ctx[4][/*time*/ ctx[22].day] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*topTimesText*/ 8 && t2_value !== (t2_value = /*time*/ ctx[22].startTime + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*topTimesText*/ 8 && t4_value !== (t4_value = /*time*/ ctx[22].endTime + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*topTimesText*/ 4 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[22].accessibleTime)) {
+    			if (dirty & /*topTimesText*/ 8 && time_aria_label_value !== (time_aria_label_value = /*time*/ ctx[22].accessibleTime)) {
     				attr_dev(time, "aria-label", time_aria_label_value);
     			}
 
-    			if (dirty & /*topTimesText*/ 4 && t7_value !== (t7_value = /*time*/ ctx[22].numUsers + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*topTimesText*/ 4 && t10_value !== (t10_value = /*time*/ ctx[22].users + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*topTimesText*/ 8 && t7_value !== (t7_value = /*time*/ ctx[22].numUsers + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*topTimesText*/ 8 && t10_value !== (t10_value = /*time*/ ctx[22].users + "")) set_data_dev(t10, t10_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
@@ -13186,14 +13194,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(198:3) {#each topTimes as time}",
+    		source: "(226:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (223:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13201,7 +13209,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 195, 4, 6780);
+    			add_location(p, file$5, 223, 4, 7953);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13216,7 +13224,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(195:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(223:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13227,79 +13235,85 @@ var app = (function () {
     	let main;
     	let h1;
     	let t1;
-    	let h20;
+    	let h30;
     	let t3;
     	let div2;
     	let div0;
-    	let h21;
+    	let h20;
+    	let t4;
     	let t5;
-    	let label0;
-    	let h30;
-    	let t7;
-    	let input0;
+    	let t6;
+    	let h21;
     	let t8;
+    	let label0;
     	let h31;
     	let t10;
+    	let input0;
+    	let t11;
+    	let h32;
+    	let t13;
     	let p0;
     	let b0;
-    	let t12;
+    	let t15;
     	let b1;
-    	let t14;
+    	let t17;
     	let u0;
-    	let t16;
+    	let t19;
     	let i0;
-    	let t18;
+    	let t21;
     	let u1;
-    	let t20;
+    	let t23;
     	let i1;
-    	let t22;
+    	let t25;
     	let i2;
-    	let t24;
+    	let t27;
     	let u2;
-    	let t26;
-    	let i3;
-    	let t28;
     	let t29;
+    	let i3;
+    	let t31;
+    	let t32;
     	let voicerecognition;
     	let updating_noteContent;
-    	let t30;
-    	let textarea0;
-    	let t31;
-    	let br0;
-    	let t32;
-    	let input1;
     	let t33;
-    	let br1;
+    	let textarea0;
     	let t34;
-    	let label1;
-    	let h32;
+    	let br0;
+    	let t35;
+    	let input1;
     	let t36;
-    	let p1;
-    	let t38;
-    	let textarea1;
+    	let br1;
+    	let t37;
+    	let label1;
+    	let h33;
     	let t39;
-    	let br2;
-    	let t40;
-    	let input2;
+    	let p1;
     	let t41;
-    	let br3;
+    	let textarea1;
     	let t42;
+    	let br2;
+    	let t43;
+    	let p2;
+    	let t44;
+    	let input2;
+    	let t45;
+    	let br3;
+    	let t46;
     	let div1;
     	let h22;
-    	let t44;
+    	let t48;
     	let promise;
     	let current;
     	let mounted;
     	let dispose;
 
     	function voicerecognition_noteContent_binding(value) {
-    		/*voicerecognition_noteContent_binding*/ ctx[8](value);
+    		/*voicerecognition_noteContent_binding*/ ctx[9](value);
     	}
 
     	let voicerecognition_props = {};
 
-    	if (/*text*/ ctx[0] !== void 0) {
-    		voicerecognition_props.noteContent = /*text*/ ctx[0];
+    	if (/*text*/ ctx[2] !== void 0) {
+    		voicerecognition_props.noteContent = /*text*/ ctx[2];
     	}
 
     	voicerecognition = new VoiceRecognition({
@@ -13320,7 +13334,7 @@ var app = (function () {
     		value: 21
     	};
 
-    	handle_promise(promise = /*topTimesText*/ ctx[2], info);
+    	handle_promise(promise = /*topTimesText*/ ctx[3], info);
 
     	const block = {
     		c: function create() {
@@ -13328,138 +13342,149 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "When2Speech";
     			t1 = space();
-    			h20 = element("h2");
-    			h20.textContent = "A speech and text based way to find times to meet with others.";
+    			h30 = element("h3");
+    			h30.textContent = "A speech and text based way to find times to meet with others.";
     			t3 = space();
     			div2 = element("div");
     			div0 = element("div");
+    			h20 = element("h2");
+    			t4 = text("Event ");
+    			t5 = text(/*eventID*/ ctx[0]);
+    			t6 = space();
     			h21 = element("h2");
     			h21.textContent = "Share Your Availability";
-    			t5 = space();
-    			label0 = element("label");
-    			h30 = element("h3");
-    			h30.textContent = "Name?";
-    			t7 = space();
-    			input0 = element("input");
     			t8 = space();
+    			label0 = element("label");
     			h31 = element("h3");
-    			h31.textContent = "When are you available to meet?";
+    			h31.textContent = "Name?";
     			t10 = space();
+    			input0 = element("input");
+    			t11 = space();
+    			h32 = element("h3");
+    			h32.textContent = "When are you available to meet?";
+    			t13 = space();
     			p0 = element("p");
     			b0 = element("b");
     			b0.textContent = "Voice Record";
-    			t12 = text(" or ");
+    			t15 = text(" or ");
     			b1 = element("b");
     			b1.textContent = "Type";
-    			t14 = text(" your availability into the box below. Start with the ");
+    			t17 = text(" your availability into the box below. Start with the ");
     			u0 = element("u");
     			u0.textContent = "day of the week";
-    			t16 = text(" followed by the ");
+    			t19 = text(" followed by the ");
     			i0 = element("i");
     			i0.textContent = "times";
-    			t18 = text(". For example, you can say, I'm free... \"");
+    			t21 = text(". For example, you can say, I'm free... \"");
     			u1 = element("u");
     			u1.textContent = "Monday";
-    			t20 = space();
+    			t23 = space();
     			i1 = element("i");
     			i1.textContent = "9am-10am";
-    			t22 = text(" and ");
+    			t25 = text(" and ");
     			i2 = element("i");
     			i2.textContent = "11am-12pm";
-    			t24 = text(", ");
+    			t27 = text(", ");
     			u2 = element("u");
     			u2.textContent = "Tuesday";
-    			t26 = space();
+    			t29 = space();
     			i3 = element("i");
     			i3.textContent = "except 3-4pm";
-    			t28 = text(", Wednesday after 3pm\" and so on... Be sure to indicate AM or PM.");
-    			t29 = space();
-    			create_component(voicerecognition.$$.fragment);
-    			t30 = space();
-    			textarea0 = element("textarea");
-    			t31 = space();
-    			br0 = element("br");
+    			t31 = text(", Wednesday after 3pm\" and so on... Be sure to indicate AM or PM.");
     			t32 = space();
-    			input1 = element("input");
+    			create_component(voicerecognition.$$.fragment);
     			t33 = space();
-    			br1 = element("br");
+    			textarea0 = element("textarea");
     			t34 = space();
-    			label1 = element("label");
-    			h32 = element("h3");
-    			h32.textContent = "Parsed Availability";
+    			br0 = element("br");
+    			t35 = space();
+    			input1 = element("input");
     			t36 = space();
-    			p1 = element("p");
-    			p1.textContent = "Here's what we got from you. Make any changes by editing the box above and pressing \"Submit\" again.";
-    			t38 = space();
-    			textarea1 = element("textarea");
+    			br1 = element("br");
+    			t37 = space();
+    			label1 = element("label");
+    			h33 = element("h3");
+    			h33.textContent = "Parsed Availability";
     			t39 = space();
-    			br2 = element("br");
-    			t40 = space();
-    			input2 = element("input");
+    			p1 = element("p");
+    			p1.textContent = "Here's what we got. Make any changes by editing the box above and pressing \"Submit\" again.";
     			t41 = space();
-    			br3 = element("br");
+    			textarea1 = element("textarea");
     			t42 = space();
+    			br2 = element("br");
+    			t43 = space();
+    			p2 = element("p");
+    			t44 = space();
+    			input2 = element("input");
+    			t45 = space();
+    			br3 = element("br");
+    			t46 = space();
     			div1 = element("div");
     			h22 = element("h2");
     			h22.textContent = "Top Times for Everyone";
-    			t44 = space();
+    			t48 = space();
     			info.block.c();
-    			attr_dev(h1, "class", "svelte-1a9nea4");
-    			add_location(h1, file$5, 167, 1, 5243);
-    			add_location(h20, file$5, 168, 1, 5265);
-    			add_location(h21, file$5, 171, 3, 5399);
-    			add_location(h30, file$5, 172, 21, 5453);
+    			attr_dev(h1, "class", "svelte-n0rlhk");
+    			add_location(h1, file$5, 193, 1, 6340);
+    			add_location(h30, file$5, 194, 1, 6362);
+    			add_location(h20, file$5, 197, 3, 6496);
+    			add_location(h21, file$5, 198, 3, 6524);
+    			add_location(h31, file$5, 199, 21, 6578);
     			attr_dev(label0, "for", "name");
-    			add_location(label0, file$5, 172, 3, 5435);
+    			add_location(label0, file$5, 199, 3, 6560);
     			attr_dev(input0, "id", "name");
-    			add_location(input0, file$5, 173, 3, 5479);
-    			add_location(h31, file$5, 174, 3, 5518);
-    			add_location(b0, file$5, 175, 6, 5565);
-    			add_location(b1, file$5, 175, 29, 5588);
-    			add_location(u0, file$5, 175, 94, 5653);
-    			add_location(i0, file$5, 175, 133, 5692);
-    			add_location(u1, file$5, 175, 186, 5745);
-    			add_location(i1, file$5, 175, 200, 5759);
-    			add_location(i2, file$5, 175, 220, 5779);
-    			add_location(u2, file$5, 175, 238, 5797);
-    			add_location(i3, file$5, 175, 253, 5812);
-    			add_location(p0, file$5, 175, 3, 5562);
+    			add_location(input0, file$5, 200, 3, 6604);
+    			add_location(h32, file$5, 201, 3, 6643);
+    			add_location(b0, file$5, 202, 6, 6690);
+    			add_location(b1, file$5, 202, 29, 6713);
+    			add_location(u0, file$5, 202, 94, 6778);
+    			add_location(i0, file$5, 202, 133, 6817);
+    			add_location(u1, file$5, 202, 186, 6870);
+    			add_location(i1, file$5, 202, 200, 6884);
+    			add_location(i2, file$5, 202, 220, 6904);
+    			add_location(u2, file$5, 202, 238, 6922);
+    			add_location(i3, file$5, 202, 253, 6937);
+    			add_location(p0, file$5, 202, 3, 6687);
     			attr_dev(textarea0, "aria-label", "an input field for your availability");
     			attr_dev(textarea0, "placeholder", "");
-    			attr_dev(textarea0, "class", "svelte-1a9nea4");
-    			add_location(textarea0, file$5, 177, 3, 5971);
-    			add_location(br0, file$5, 178, 3, 6102);
-    			attr_dev(input1, "class", "submit svelte-1a9nea4");
+    			attr_dev(textarea0, "class", "svelte-n0rlhk");
+    			add_location(textarea0, file$5, 204, 3, 7096);
+    			add_location(br0, file$5, 205, 3, 7221);
+    			attr_dev(input1, "class", "submit svelte-n0rlhk");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 179, 3, 6110);
-    			add_location(br1, file$5, 180, 3, 6186);
-    			add_location(h32, file$5, 181, 29, 6220);
+    			add_location(input1, file$5, 206, 3, 7229);
+    			add_location(br1, file$5, 207, 3, 7305);
+    			add_location(h33, file$5, 208, 29, 7339);
     			attr_dev(label1, "for", "confirmation");
-    			add_location(label1, file$5, 181, 3, 6194);
-    			add_location(p1, file$5, 182, 3, 6260);
+    			add_location(label1, file$5, 208, 3, 7313);
+    			add_location(p1, file$5, 209, 3, 7379);
+    			set_style(textarea1, "background-color", "white");
+    			textarea1.readOnly = true;
     			attr_dev(textarea1, "id", "confirmation");
     			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
     			attr_dev(textarea1, "placeholder", "");
-    			attr_dev(textarea1, "class", "svelte-1a9nea4");
-    			add_location(textarea1, file$5, 183, 3, 6370);
-    			add_location(br2, file$5, 184, 3, 6482);
-    			attr_dev(input2, "class", "submit svelte-1a9nea4");
+    			attr_dev(textarea1, "class", "svelte-n0rlhk");
+    			add_location(textarea1, file$5, 210, 3, 7480);
+    			add_location(br2, file$5, 211, 3, 7632);
+    			attr_dev(p2, "id", "edited");
+    			add_location(p2, file$5, 212, 3, 7640);
+    			attr_dev(input2, "class", "submit svelte-n0rlhk");
     			attr_dev(input2, "type", "button");
     			input2.value = "Submit Final Response";
-    			add_location(input2, file$5, 185, 3, 6490);
-    			add_location(br3, file$5, 186, 3, 6578);
-    			attr_dev(div0, "class", "input-side svelte-1a9nea4");
+    			add_location(input2, file$5, 213, 3, 7663);
+    			add_location(br3, file$5, 214, 3, 7751);
+    			attr_dev(div0, "class", "input-side svelte-n0rlhk");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$5, 170, 2, 5357);
-    			add_location(h22, file$5, 193, 3, 6719);
-    			attr_dev(div1, "class", "top-times-side svelte-1a9nea4");
+    			add_location(div0, file$5, 196, 2, 6454);
+    			add_location(h22, file$5, 221, 3, 7892);
+    			attr_dev(div1, "class", "top-times-side svelte-n0rlhk");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 192, 2, 6673);
-    			attr_dev(div2, "class", "cf svelte-1a9nea4");
-    			add_location(div2, file$5, 169, 1, 5338);
-    			attr_dev(main, "class", "svelte-1a9nea4");
-    			add_location(main, file$5, 166, 0, 5235);
+    			add_location(div1, file$5, 220, 2, 7846);
+    			attr_dev(div2, "class", "cf svelte-n0rlhk");
+    			add_location(div2, file$5, 195, 1, 6435);
+    			attr_dev(main, "class", "svelte-n0rlhk");
+    			add_location(main, file$5, 192, 0, 6332);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13468,67 +13493,73 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, h1);
     			append_dev(main, t1);
-    			append_dev(main, h20);
+    			append_dev(main, h30);
     			append_dev(main, t3);
     			append_dev(main, div2);
     			append_dev(div2, div0);
+    			append_dev(div0, h20);
+    			append_dev(h20, t4);
+    			append_dev(h20, t5);
+    			append_dev(div0, t6);
     			append_dev(div0, h21);
-    			append_dev(div0, t5);
+    			append_dev(div0, t8);
     			append_dev(div0, label0);
-    			append_dev(label0, h30);
-    			append_dev(div0, t7);
+    			append_dev(label0, h31);
+    			append_dev(div0, t10);
     			append_dev(div0, input0);
     			set_input_value(input0, /*name*/ ctx[1]);
-    			append_dev(div0, t8);
-    			append_dev(div0, h31);
-    			append_dev(div0, t10);
+    			append_dev(div0, t11);
+    			append_dev(div0, h32);
+    			append_dev(div0, t13);
     			append_dev(div0, p0);
     			append_dev(p0, b0);
-    			append_dev(p0, t12);
+    			append_dev(p0, t15);
     			append_dev(p0, b1);
-    			append_dev(p0, t14);
+    			append_dev(p0, t17);
     			append_dev(p0, u0);
-    			append_dev(p0, t16);
+    			append_dev(p0, t19);
     			append_dev(p0, i0);
-    			append_dev(p0, t18);
+    			append_dev(p0, t21);
     			append_dev(p0, u1);
-    			append_dev(p0, t20);
+    			append_dev(p0, t23);
     			append_dev(p0, i1);
-    			append_dev(p0, t22);
+    			append_dev(p0, t25);
     			append_dev(p0, i2);
-    			append_dev(p0, t24);
+    			append_dev(p0, t27);
     			append_dev(p0, u2);
-    			append_dev(p0, t26);
+    			append_dev(p0, t29);
     			append_dev(p0, i3);
-    			append_dev(p0, t28);
-    			append_dev(div0, t29);
-    			mount_component(voicerecognition, div0, null);
-    			append_dev(div0, t30);
-    			append_dev(div0, textarea0);
-    			set_input_value(textarea0, /*text*/ ctx[0]);
-    			append_dev(div0, t31);
-    			append_dev(div0, br0);
+    			append_dev(p0, t31);
     			append_dev(div0, t32);
-    			append_dev(div0, input1);
+    			mount_component(voicerecognition, div0, null);
     			append_dev(div0, t33);
-    			append_dev(div0, br1);
+    			append_dev(div0, textarea0);
+    			set_input_value(textarea0, /*text*/ ctx[2]);
     			append_dev(div0, t34);
-    			append_dev(div0, label1);
-    			append_dev(label1, h32);
+    			append_dev(div0, br0);
+    			append_dev(div0, t35);
+    			append_dev(div0, input1);
     			append_dev(div0, t36);
-    			append_dev(div0, p1);
-    			append_dev(div0, t38);
-    			append_dev(div0, textarea1);
+    			append_dev(div0, br1);
+    			append_dev(div0, t37);
+    			append_dev(div0, label1);
+    			append_dev(label1, h33);
     			append_dev(div0, t39);
-    			append_dev(div0, br2);
-    			append_dev(div0, t40);
-    			append_dev(div0, input2);
+    			append_dev(div0, p1);
     			append_dev(div0, t41);
+    			append_dev(div0, textarea1);
+    			append_dev(div0, t42);
+    			append_dev(div0, br2);
+    			append_dev(div0, t43);
+    			append_dev(div0, p2);
+    			append_dev(div0, t44);
+    			append_dev(div0, input2);
+    			append_dev(div0, t45);
     			append_dev(div0, br3);
-    			append_dev(div2, t42);
+    			append_dev(div2, t46);
     			append_dev(div2, div1);
     			append_dev(div1, h22);
-    			append_dev(div1, t44);
+    			append_dev(div1, t48);
     			info.block.m(div1, info.anchor = null);
     			info.mount = () => div1;
     			info.anchor = null;
@@ -13536,9 +13567,9 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
-    					listen_dev(textarea0, "input", /*textarea0_input_handler*/ ctx[9]),
-    					listen_dev(textarea0, "input", /*handleInput*/ ctx[4], false, false, false),
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[8]),
+    					listen_dev(textarea0, "keyup", /*retro*/ ctx[7], false, false, false),
+    					listen_dev(textarea0, "input", /*textarea0_input_handler*/ ctx[10]),
     					listen_dev(input1, "click", /*presubmit*/ ctx[6], false, false, false),
     					listen_dev(input2, "click", /*submit*/ ctx[5], false, false, false)
     				];
@@ -13548,6 +13579,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
+    			if (!current || dirty & /*eventID*/ 1) set_data_dev(t5, /*eventID*/ ctx[0]);
 
     			if (dirty & /*name*/ 2 && input0.value !== /*name*/ ctx[1]) {
     				set_input_value(input0, /*name*/ ctx[1]);
@@ -13555,21 +13587,21 @@ var app = (function () {
 
     			const voicerecognition_changes = {};
 
-    			if (!updating_noteContent && dirty & /*text*/ 1) {
+    			if (!updating_noteContent && dirty & /*text*/ 4) {
     				updating_noteContent = true;
-    				voicerecognition_changes.noteContent = /*text*/ ctx[0];
+    				voicerecognition_changes.noteContent = /*text*/ ctx[2];
     				add_flush_callback(() => updating_noteContent = false);
     			}
 
     			voicerecognition.$set(voicerecognition_changes);
 
-    			if (dirty & /*text*/ 1) {
-    				set_input_value(textarea0, /*text*/ ctx[0]);
+    			if (dirty & /*text*/ 4) {
+    				set_input_value(textarea0, /*text*/ ctx[2]);
     			}
 
     			info.ctx = ctx;
 
-    			if (dirty & /*topTimesText*/ 4 && promise !== (promise = /*topTimesText*/ ctx[2]) && handle_promise(promise, info)) ; else {
+    			if (dirty & /*topTimesText*/ 8 && promise !== (promise = /*topTimesText*/ ctx[3]) && handle_promise(promise, info)) ; else {
     				update_await_block_branch(info, ctx, dirty);
     			}
     		},
@@ -13605,6 +13637,7 @@ var app = (function () {
     }
 
     function render(available) {
+    	console.log(available);
     	let a = "";
 
     	for (let i = 0; i < Object.keys(available).length; i++) {
@@ -13612,9 +13645,16 @@ var app = (function () {
     		let v = available[k];
 
     		for (let j = 0; j < v.length; j++) {
-    			let start = v[j][0];
-    			let end = v[j][1];
-    			a += start + " to " + end + "\n";
+    			let start = String(v[j][0]);
+    			let end = String(v[j][1]);
+
+    			// remove timezone from confirmation text
+    			console.log(start);
+
+    			console.log(end);
+    			start = start.substring(0, start.indexOf(" ("));
+    			end = end.substring(0, end.indexOf(" ("));
+    			a += start + " to " + end + ",\n";
     		}
     	}
 
@@ -13622,20 +13662,23 @@ var app = (function () {
     }
 
     function instance$5($$self, $$props, $$invalidate) {
-    	let timeArr;
     	let $storedData;
     	validate_store(storedData, 'storedData');
-    	component_subscribe($$self, storedData, $$value => $$invalidate(12, $storedData = $$value));
+    	component_subscribe($$self, storedData, $$value => $$invalidate(14, $storedData = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('InputTimes', slots, []);
     	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    	let voiceText = '';
-    	let typedText = '';
+    	let { eventID } = $$props;
     	let name = '';
     	let text = '';
     	let availableTimes = null;
     	let API_BASE = 'http://localhost:3001';
+    	let presubmitted = false;
+    	let editedAfterPresubmit = true;
     	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
+
+    	// console.log(topIntervals);
+    	getTimes();
 
     	// Concepts incorporated: Rendering Times
     	let topTimesText = topTimesToText(topIntervals);
@@ -13709,16 +13752,18 @@ var app = (function () {
     	}
 
     	// Concepts incorporated: Time Text Description
-    	function handleInput() {
-    		availableTimes = processText(text);
-    	}
-
+    	// function handleInput() {
+    	// 	availableTimes = processText(text);
+    	// };
     	function getTimes() {
     		const data = $storedData;
+    		console.log('in get times. data:');
+    		console.log(data);
     		return data;
     	}
 
     	function postTimes(username, userTimes) {
+    		console.log('in post times');
     		const strUserTimes = JSON.stringify(userTimes);
 
     		({
@@ -13728,6 +13773,7 @@ var app = (function () {
     		});
 
     		const localData = { [username]: strUserTimes };
+    		console.log(localData);
     		storedData.set(Object.assign({}, localData, $storedData));
     		return localData;
     	}
@@ -13741,12 +13787,13 @@ var app = (function () {
     			let userTimes = getAllUserTimes(true);
     			console.log("utimes");
     			console.log(userTimes);
-    			$$invalidate(2, topTimesText = topTimesToText(getTopNIntervals(userTimes, 5)));
+    			$$invalidate(3, topTimesText = topTimesToText(getTopNIntervals(userTimes, 5)));
     			console.log("topn");
     			console.log(topTimesText);
     			currentUser.set(name);
     			$$invalidate(1, name = '');
-    			$$invalidate(0, text = '');
+    			$$invalidate(2, text = '');
+    			document.getElementById("confirmation").value = '';
     		}
     	}
 
@@ -13774,12 +13821,33 @@ var app = (function () {
     		if (name === '') {
     			alert('please include name!');
     		} else {
+    			presubmitted = true;
+    			editedAfterPresubmit = false;
     			availableTimes = processText(text);
     			document.getElementById("confirmation").value = render(availableTimes);
+    			document.getElementById("confirmation").style.backgroundColor = "white";
+    			document.getElementById("edited").innerText = "";
     		}
     	}
 
-    	const writable_props = [];
+    	function retro() {
+    		console.log("retro called");
+    		editedAfterPresubmit = true;
+
+    		if (presubmitted && editedAfterPresubmit) {
+    			console.log("retro really called");
+    			document.getElementById("confirmation").style.backgroundColor = "#D3D3D3";
+    			document.getElementById("edited").innerText = "Parse is no longer accurate because input has been edited since \"Submit\" was last pressed. To regenerate parsed times, press \"Submit\" again.";
+    		}
+    	}
+
+    	$$self.$$.on_mount.push(function () {
+    		if (eventID === undefined && !('eventID' in $$props || $$self.$$.bound[$$self.$$.props['eventID']])) {
+    			console_1$1.warn("<InputTimes> was created without expected prop 'eventID'");
+    		}
+    	});
+
+    	const writable_props = ['eventID'];
 
     	Object_1.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<InputTimes> was created with unknown prop '${key}'`);
@@ -13792,13 +13860,17 @@ var app = (function () {
 
     	function voicerecognition_noteContent_binding(value) {
     		text = value;
-    		$$invalidate(0, text);
+    		$$invalidate(2, text);
     	}
 
     	function textarea0_input_handler() {
     		text = this.value;
-    		$$invalidate(0, text);
+    		$$invalidate(2, text);
     	}
+
+    	$$self.$$set = $$props => {
+    		if ('eventID' in $$props) $$invalidate(0, eventID = $$props.eventID);
+    	};
 
     	$$self.$capture_state = () => ({
     		VoiceRecognition,
@@ -13809,59 +13881,52 @@ var app = (function () {
     		storedData,
     		currentUser,
     		dayArr,
-    		voiceText,
-    		typedText,
+    		eventID,
     		name,
     		text,
     		availableTimes,
     		API_BASE,
     		accessibleDate,
+    		presubmitted,
+    		editedAfterPresubmit,
     		topIntervals,
     		topTimesText,
     		topTimesToText,
-    		handleInput,
     		getTimes,
     		postTimes,
     		submit,
     		getAllUserTimes,
     		presubmit,
     		render,
-    		timeArr,
+    		retro,
     		$storedData
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('voiceText' in $$props) voiceText = $$props.voiceText;
-    		if ('typedText' in $$props) typedText = $$props.typedText;
+    		if ('eventID' in $$props) $$invalidate(0, eventID = $$props.eventID);
     		if ('name' in $$props) $$invalidate(1, name = $$props.name);
-    		if ('text' in $$props) $$invalidate(0, text = $$props.text);
+    		if ('text' in $$props) $$invalidate(2, text = $$props.text);
     		if ('availableTimes' in $$props) availableTimes = $$props.availableTimes;
     		if ('API_BASE' in $$props) API_BASE = $$props.API_BASE;
+    		if ('presubmitted' in $$props) presubmitted = $$props.presubmitted;
+    		if ('editedAfterPresubmit' in $$props) editedAfterPresubmit = $$props.editedAfterPresubmit;
     		if ('topIntervals' in $$props) topIntervals = $$props.topIntervals;
-    		if ('topTimesText' in $$props) $$invalidate(2, topTimesText = $$props.topTimesText);
-    		if ('timeArr' in $$props) timeArr = $$props.timeArr;
+    		if ('topTimesText' in $$props) $$invalidate(3, topTimesText = $$props.topTimesText);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*text*/ 1) {
-    			timeArr = text
-    			? makeTimeArr(processText(text))
-    			: Array(24).fill(0).map(() => Array(7).fill(0));
-    		}
-    	};
-
     	return [
-    		text,
+    		eventID,
     		name,
+    		text,
     		topTimesText,
     		dayArr,
-    		handleInput,
     		submit,
     		presubmit,
+    		retro,
     		input0_input_handler,
     		voicerecognition_noteContent_binding,
     		textarea0_input_handler
@@ -13871,7 +13936,7 @@ var app = (function () {
     class InputTimes extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {});
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { eventID: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -13879,6 +13944,14 @@ var app = (function () {
     			options,
     			id: create_fragment$5.name
     		});
+    	}
+
+    	get eventID() {
+    		throw new Error("<InputTimes>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set eventID(value) {
+    		throw new Error("<InputTimes>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -25539,9 +25612,9 @@ var app = (function () {
     	let link1;
     	let t2;
     	let main;
-    	let button0;
+    	let a0;
     	let t4;
-    	let button1;
+    	let a1;
 
     	const block = {
     		c: function create() {
@@ -25553,11 +25626,11 @@ var app = (function () {
     			link1 = element("link");
     			t2 = space();
     			main = element("main");
-    			button0 = element("button");
-    			button0.textContent = "Create New Event";
+    			a0 = element("a");
+    			a0.textContent = "Create New Event";
     			t4 = space();
-    			button1 = element("button");
-    			button1.textContent = "Enter Existing Event";
+    			a1 = element("a");
+    			a1.textContent = "Enter Existing Event";
     			attr_dev(link0, "href", "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css");
     			attr_dev(link0, "rel", "stylesheet");
     			attr_dev(link0, "integrity", "sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ");
@@ -25565,18 +25638,18 @@ var app = (function () {
     			add_location(link0, file$3, 1, 1, 15);
     			attr_dev(script, "type", "module");
     			if (!src_url_equal(script.src, script_src_value = "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/esm/inclusive-dates.js")) attr_dev(script, "src", script_src_value);
-    			add_location(script, file$3, 11, 2, 569);
+    			add_location(script, file$3, 10, 2, 542);
     			attr_dev(link1, "rel", "stylesheet");
     			attr_dev(link1, "href", "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/themes/light.css");
-    			add_location(link1, file$3, 17, 2, 728);
-    			add_location(head, file$3, 10, 0, 560);
-    			attr_dev(button0, "type", "button");
-    			attr_dev(button0, "class", "btn btn-primary btn-lg");
-    			add_location(button0, file$3, 24, 4, 858);
-    			attr_dev(button1, "type", "button");
-    			attr_dev(button1, "class", "btn btn-primary btn-lg");
-    			add_location(button1, file$3, 25, 4, 941);
-    			add_location(main, file$3, 23, 0, 847);
+    			add_location(link1, file$3, 16, 2, 701);
+    			add_location(head, file$3, 9, 0, 533);
+    			attr_dev(a0, "href", "/new");
+    			attr_dev(a0, "class", "btn btn-primary btn-lg");
+    			add_location(a0, file$3, 23, 4, 831);
+    			attr_dev(a1, "href", "/existing");
+    			attr_dev(a1, "class", "btn btn-primary btn-lg");
+    			add_location(a1, file$3, 24, 4, 902);
+    			add_location(main, file$3, 22, 0, 820);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25590,9 +25663,9 @@ var app = (function () {
     			append_dev(head, link1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, main, anchor);
-    			append_dev(main, button0);
+    			append_dev(main, a0);
     			append_dev(main, t4);
-    			append_dev(main, button1);
+    			append_dev(main, a1);
     		},
     		p: noop,
     		i: noop,
@@ -25624,51 +25697,32 @@ var app = (function () {
     	let startDate = '';
     	let endDate = '';
     	let timeZone = '';
-    	let { onNewEvent } = $$props;
-
-    	$$self.$$.on_mount.push(function () {
-    		if (onNewEvent === undefined && !('onNewEvent' in $$props || $$self.$$.bound[$$self.$$.props['onNewEvent']])) {
-    			console.warn("<HomePage> was created without expected prop 'onNewEvent'");
-    		}
-    	});
-
-    	const writable_props = ['onNewEvent'];
+    	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<HomePage> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$$set = $$props => {
-    		if ('onNewEvent' in $$props) $$invalidate(0, onNewEvent = $$props.onNewEvent);
-    	};
-
-    	$$self.$capture_state = () => ({
-    		eventName,
-    		startDate,
-    		endDate,
-    		timeZone,
-    		onNewEvent
-    	});
+    	$$self.$capture_state = () => ({ eventName, startDate, endDate, timeZone });
 
     	$$self.$inject_state = $$props => {
     		if ('eventName' in $$props) eventName = $$props.eventName;
     		if ('startDate' in $$props) startDate = $$props.startDate;
     		if ('endDate' in $$props) endDate = $$props.endDate;
     		if ('timeZone' in $$props) timeZone = $$props.timeZone;
-    		if ('onNewEvent' in $$props) $$invalidate(0, onNewEvent = $$props.onNewEvent);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [onNewEvent];
+    	return [];
     }
 
     class HomePage extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { onNewEvent: 0 });
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -25676,14 +25730,6 @@ var app = (function () {
     			options,
     			id: create_fragment$3.name
     		});
-    	}
-
-    	get onNewEvent() {
-    		throw new Error("<HomePage>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set onNewEvent(value) {
-    		throw new Error("<HomePage>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -25921,6 +25967,54 @@ var app = (function () {
     /* src/routes/index.svelte generated by Svelte v3.55.1 */
     const file$1 = "src/routes/index.svelte";
 
+    // (20:4) <Route path="/:id" let:params>
+    function create_default_slot_1(ctx) {
+    	let inputtimes;
+    	let current;
+
+    	inputtimes = new InputTimes({
+    			props: { eventID: /*params*/ ctx[1].id },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(inputtimes.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(inputtimes, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const inputtimes_changes = {};
+    			if (dirty & /*params*/ 2) inputtimes_changes.eventID = /*params*/ ctx[1].id;
+    			inputtimes.$set(inputtimes_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(inputtimes.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(inputtimes.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(inputtimes, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1.name,
+    		type: "slot",
+    		source: "(20:4) <Route path=\\\"/:id\\\" let:params>",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     // (13:0) <Router {url}>
     function create_default_slot(ctx) {
     	let div;
@@ -25934,16 +26028,11 @@ var app = (function () {
     	let current;
 
     	route0 = new Route({
-    			props: { path: "/input", component: InputTimes },
-    			$$inline: true
-    		});
-
-    	route1 = new Route({
     			props: { path: "/new", component: NewEvent },
     			$$inline: true
     		});
 
-    	route2 = new Route({
+    	route1 = new Route({
     			props: {
     				path: "/existing",
     				component: ExistingEvent
@@ -25951,8 +26040,23 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	route3 = new Route({
+    	route2 = new Route({
     			props: { path: "/", component: HomePage },
+    			$$inline: true
+    		});
+
+    	route3 = new Route({
+    			props: {
+    				path: "/:id",
+    				$$slots: {
+    					default: [
+    						create_default_slot_1,
+    						({ params }) => ({ 1: params }),
+    						({ params }) => params ? 2 : 0
+    					]
+    				},
+    				$$scope: { ctx }
+    			},
     			$$inline: true
     		});
 
@@ -25979,7 +26083,15 @@ var app = (function () {
     			mount_component(route3, div, null);
     			current = true;
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			const route3_changes = {};
+
+    			if (dirty & /*$$scope, params*/ 6) {
+    				route3_changes.$$scope = { dirty, ctx };
+    			}
+
+    			route3.$set(route3_changes);
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(route0.$$.fragment, local);
@@ -26043,7 +26155,7 @@ var app = (function () {
     			const router_changes = {};
     			if (dirty & /*url*/ 1) router_changes.url = /*url*/ ctx[0];
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				router_changes.$$scope = { dirty, ctx };
     			}
 
