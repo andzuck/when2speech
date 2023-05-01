@@ -23,6 +23,8 @@
     "chrono-node": "^2.5.0",
     "inclusive-dates": "^0.1.7",
     "jquery": "^3.6.4",
+    "lowdb": "^4.0.1",
+    "node": "^20.0.0",
     "sirv-cli": "^2.0.0",
     "svelte-routing": "^1.6.0"
   }

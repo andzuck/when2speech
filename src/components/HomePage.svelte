@@ -18,6 +18,8 @@
 </head>
 
 <main>
+    <h1>When2Speech</h1>
+    <h3>A speech and text based way to find times to meet with others.</h3>
     <br><br><br>
     <a href="/new" class="btn btn-primary btn-lg">Create New Event</a>
     <br><br><br><br>

@@ -35,6 +35,8 @@
     }
     else {
       hasError = false;
+      console.log('hay');
+      location.href = "/" + eventName;
     }
 	}
 </script>
