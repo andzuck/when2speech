@@ -23,10 +23,10 @@
   />
 </head>
 
-<main>
+<div>
     <div class="cf">
-    <div class="input-side" role="region">
-      <label for="eventcode"><h3>Enter Existing Event Code</h3></label>
+    <div class="existing-event" role="region">
+      <label for="event-code"><h3>Enter Existing Event Code</h3></label>
       <br>
       <input id="event-code" bind:value={eventcode}>
       <br>
@@ -34,7 +34,7 @@
     </div>
   </div>
     <button on:click={onClick} type="button" class="btn btn-primary btn-lg">Enter Event</button>
-</main>
+</div>
 
 <style>
   .form-element {

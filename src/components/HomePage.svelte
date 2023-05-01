@@ -31,6 +31,10 @@
     padding: 25px 0px;
   }
 
+  a:visited {
+    color: white;
+  }
+
   :global(.inclusive-dates__input-container) {
     margin: auto;
   }

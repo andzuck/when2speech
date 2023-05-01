@@ -200,8 +200,10 @@
 		<div class="input-side" role="region">
 			<h2>Event: {eventID}</h2>
 			<h2>Share Your Availability</h2>
-			<label for="name"><h3>Name?</h3></label>
-			<input id="name" bind:value={name}>
+			<div class="name-wrapper">
+				<label id="name-label" for="name"><h3>Name: </h3></label>
+				<input id="name" bind:value={name}>
+			</div>
 			<h3>When are you available to meet?</h3>
 			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
@@ -209,8 +211,7 @@
 			<br>
 			<input class="submit" id="presub" type="button" value="Submit" on:click={presubmit}>
 			<br>
-			<label for="confirmation"><h3>Parsed Availability</h3></label>
-			<p>Here's what we got. Make any changes by editing the box above and pressing "Submit" again.</p>
+			<label for="confirmation"><b>Parsed Availability</b></label><p>Here's what we got. Make any changes by editing the box above or re-recording and pressing "Submit" again.</p>
 			<textarea style="background-color:white" readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
 			<p id="edited"></p>
@@ -264,6 +265,19 @@
 		height: 150px;
 		max-width: 350px;
 		padding-bottom: 150px;
+	}
+
+	.name-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	#name {
+/*		height:;*/
+	}
+
+	#name-label {
+		padding-right: 30px;
 	}
 
 	.submit {

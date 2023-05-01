@@ -56,15 +56,10 @@
 
 <main>
     <h1>Create New Event</h1>
-
-    {#if hasError == true}
-        <p class="error-alert">{errMessage}</p>
-    {/if}
-
     <form class:submitted on:submit|preventDefault={handleSubmit}>
     <div class="form-element">
-        <div><label for="event-name"><h2>Event Name</h2></label></div>
-        <input class="form-control" required id="event-name" bind:value={eventName}>
+        <div><label for="event-name" alt="required"><h2>Event Name</h2></label></div>
+        <input class="form-control" required aria-required=”true” id="event-name" bind:value={eventName} oninvalid="this.setCustomValidity('Please enter event name.')" oninput="setCustomValidity('')">
     </div>
     <div class="form-element">
         <div><label for="date-range"><h2>Choose a Date Range</h2></label></div>
@@ -73,7 +68,7 @@
     <div class="form-element">
         <div><label for="time-zone-offset"><h2>Time Zone</h2></label></div>
         <!-- Taken from https://gist.github.com/nodesocket/3919205 -->
-        <select name="timezone_offset" id="timezone-offset" class="span5" bind:value={timeZone}>
+        <select name="timezone_offset" required id="timezone-offset" class="span5" bind:value={timeZone}>
             <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
             <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
             <option value="-10:00">(GMT -10:00) Hawaii</option>
@@ -117,6 +112,9 @@
         </select>
     </div>
     <button type="submit" class="btn btn-primary btn-lg" on:click={() => submitted = true}>Create Event</button>
+    {#if hasError == true}
+        <p class="error-alert">{errMessage}</p>
+    {/if}
     </form>
   </main>
 
