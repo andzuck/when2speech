@@ -13015,7 +13015,7 @@ var app = (function () {
     	return block;
     }
 
-    // (225:3) {:then topTimes}
+    // (229:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*topTimes*/ ctx[21];
@@ -13076,14 +13076,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(225:3) {:then topTimes}",
+    		source: "(229:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (226:3) {#each topTimes as time}
+    // (230:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -13138,15 +13138,15 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[22].accessibleTime);
-    			add_location(time, file$5, 227, 11, 8068);
-    			add_location(b, file$5, 227, 8, 8065);
-    			add_location(br0, file$5, 228, 5, 8188);
-    			add_location(u, file$5, 229, 5, 8198);
-    			add_location(br1, file$5, 229, 34, 8227);
-    			add_location(p, file$5, 227, 5, 8062);
+    			add_location(time, file$5, 231, 11, 8251);
+    			add_location(b, file$5, 231, 8, 8248);
+    			add_location(br0, file$5, 232, 5, 8371);
+    			add_location(u, file$5, 233, 5, 8381);
+    			add_location(br1, file$5, 233, 34, 8410);
+    			add_location(p, file$5, 231, 5, 8245);
     			attr_dev(div, "class", "top-time svelte-n0rlhk");
-    			add_location(div, file$5, 226, 4, 8032);
-    			add_location(br2, file$5, 232, 4, 8271);
+    			add_location(div, file$5, 230, 4, 8215);
+    			add_location(br2, file$5, 236, 4, 8454);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13194,14 +13194,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(226:3) {#each topTimes as time}",
+    		source: "(230:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (223:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (227:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13209,7 +13209,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 223, 4, 7953);
+    			add_location(p, file$5, 227, 4, 8136);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13224,7 +13224,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(223:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(227:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13425,66 +13425,67 @@ var app = (function () {
     			t48 = space();
     			info.block.c();
     			attr_dev(h1, "class", "svelte-n0rlhk");
-    			add_location(h1, file$5, 193, 1, 6340);
-    			add_location(h30, file$5, 194, 1, 6362);
-    			add_location(h20, file$5, 197, 3, 6496);
-    			add_location(h21, file$5, 198, 3, 6524);
-    			add_location(h31, file$5, 199, 21, 6578);
+    			add_location(h1, file$5, 197, 1, 6511);
+    			add_location(h30, file$5, 198, 1, 6533);
+    			add_location(h20, file$5, 201, 3, 6667);
+    			add_location(h21, file$5, 202, 3, 6695);
+    			add_location(h31, file$5, 203, 21, 6749);
     			attr_dev(label0, "for", "name");
-    			add_location(label0, file$5, 199, 3, 6560);
+    			add_location(label0, file$5, 203, 3, 6731);
     			attr_dev(input0, "id", "name");
-    			add_location(input0, file$5, 200, 3, 6604);
-    			add_location(h32, file$5, 201, 3, 6643);
-    			add_location(b0, file$5, 202, 6, 6690);
-    			add_location(b1, file$5, 202, 29, 6713);
-    			add_location(u0, file$5, 202, 94, 6778);
-    			add_location(i0, file$5, 202, 133, 6817);
-    			add_location(u1, file$5, 202, 186, 6870);
-    			add_location(i1, file$5, 202, 200, 6884);
-    			add_location(i2, file$5, 202, 220, 6904);
-    			add_location(u2, file$5, 202, 238, 6922);
-    			add_location(i3, file$5, 202, 253, 6937);
-    			add_location(p0, file$5, 202, 3, 6687);
+    			add_location(input0, file$5, 204, 3, 6775);
+    			add_location(h32, file$5, 205, 3, 6814);
+    			add_location(b0, file$5, 206, 6, 6861);
+    			add_location(b1, file$5, 206, 29, 6884);
+    			add_location(u0, file$5, 206, 94, 6949);
+    			add_location(i0, file$5, 206, 133, 6988);
+    			add_location(u1, file$5, 206, 186, 7041);
+    			add_location(i1, file$5, 206, 200, 7055);
+    			add_location(i2, file$5, 206, 220, 7075);
+    			add_location(u2, file$5, 206, 238, 7093);
+    			add_location(i3, file$5, 206, 253, 7108);
+    			add_location(p0, file$5, 206, 3, 6858);
     			attr_dev(textarea0, "aria-label", "an input field for your availability");
     			attr_dev(textarea0, "placeholder", "");
     			attr_dev(textarea0, "class", "svelte-n0rlhk");
-    			add_location(textarea0, file$5, 204, 3, 7096);
-    			add_location(br0, file$5, 205, 3, 7221);
+    			add_location(textarea0, file$5, 208, 3, 7267);
+    			add_location(br0, file$5, 209, 3, 7392);
     			attr_dev(input1, "class", "submit svelte-n0rlhk");
+    			attr_dev(input1, "id", "presub");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 206, 3, 7229);
-    			add_location(br1, file$5, 207, 3, 7305);
-    			add_location(h33, file$5, 208, 29, 7339);
+    			add_location(input1, file$5, 210, 3, 7400);
+    			add_location(br1, file$5, 211, 3, 7488);
+    			add_location(h33, file$5, 212, 29, 7522);
     			attr_dev(label1, "for", "confirmation");
-    			add_location(label1, file$5, 208, 3, 7313);
-    			add_location(p1, file$5, 209, 3, 7379);
+    			add_location(label1, file$5, 212, 3, 7496);
+    			add_location(p1, file$5, 213, 3, 7562);
     			set_style(textarea1, "background-color", "white");
     			textarea1.readOnly = true;
     			attr_dev(textarea1, "id", "confirmation");
     			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
     			attr_dev(textarea1, "placeholder", "");
     			attr_dev(textarea1, "class", "svelte-n0rlhk");
-    			add_location(textarea1, file$5, 210, 3, 7480);
-    			add_location(br2, file$5, 211, 3, 7632);
+    			add_location(textarea1, file$5, 214, 3, 7663);
+    			add_location(br2, file$5, 215, 3, 7815);
     			attr_dev(p2, "id", "edited");
-    			add_location(p2, file$5, 212, 3, 7640);
+    			add_location(p2, file$5, 216, 3, 7823);
     			attr_dev(input2, "class", "submit svelte-n0rlhk");
     			attr_dev(input2, "type", "button");
     			input2.value = "Submit Final Response";
-    			add_location(input2, file$5, 213, 3, 7663);
-    			add_location(br3, file$5, 214, 3, 7751);
+    			add_location(input2, file$5, 217, 3, 7846);
+    			add_location(br3, file$5, 218, 3, 7934);
     			attr_dev(div0, "class", "input-side svelte-n0rlhk");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$5, 196, 2, 6454);
-    			add_location(h22, file$5, 221, 3, 7892);
+    			add_location(div0, file$5, 200, 2, 6625);
+    			add_location(h22, file$5, 225, 3, 8075);
     			attr_dev(div1, "class", "top-times-side svelte-n0rlhk");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 220, 2, 7846);
+    			add_location(div1, file$5, 224, 2, 8029);
     			attr_dev(div2, "class", "cf svelte-n0rlhk");
-    			add_location(div2, file$5, 195, 1, 6435);
+    			add_location(div2, file$5, 199, 1, 6606);
     			attr_dev(main, "class", "svelte-n0rlhk");
-    			add_location(main, file$5, 192, 0, 6332);
+    			add_location(main, file$5, 196, 0, 6503);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13674,7 +13675,7 @@ var app = (function () {
     	let availableTimes = null;
     	let API_BASE = 'http://localhost:3001';
     	let presubmitted = false;
-    	let editedAfterPresubmit = true;
+    	let editedAfterPresubmit = false;
     	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 
     	// console.log(topIntervals);
@@ -13794,6 +13795,9 @@ var app = (function () {
     			$$invalidate(1, name = '');
     			$$invalidate(2, text = '');
     			document.getElementById("confirmation").value = '';
+    			document.getElementById("presub").value = "Submit";
+    			presubmitted = false;
+    			editedAfterPresubmit = false;
     		}
     	}
 
@@ -13823,6 +13827,7 @@ var app = (function () {
     		} else {
     			presubmitted = true;
     			editedAfterPresubmit = false;
+    			document.getElementById("presub").value = "Resubmit";
     			availableTimes = processText(text);
     			document.getElementById("confirmation").value = render(availableTimes);
     			document.getElementById("confirmation").style.backgroundColor = "white";

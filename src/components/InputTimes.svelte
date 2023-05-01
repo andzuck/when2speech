@@ -12,7 +12,7 @@
 	let API_BASE = 'http://localhost:3001';
 	import accessibleDate from 'accessible-date';
 	let presubmitted = false;
-	let editedAfterPresubmit = true;
+	let editedAfterPresubmit = false;
 
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 	// console.log(topIntervals);
@@ -116,6 +116,9 @@
 			name = '';
 			text = '';
 			document.getElementById("confirmation").value = '';
+			document.getElementById("presub").value = "Submit";
+			presubmitted = false;
+			editedAfterPresubmit = false;
 		}
 		
 	};
@@ -147,6 +150,7 @@
 		else{
 			presubmitted = true;
 			editedAfterPresubmit = false;
+			document.getElementById("presub").value = "Resubmit";
 			availableTimes = processText(text);
 			document.getElementById("confirmation").value = render(availableTimes);
 			document.getElementById("confirmation").style.backgroundColor = "white";
@@ -204,7 +208,7 @@
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
-			<input class="submit" type="button" value="Submit" on:click={presubmit}>
+			<input class="submit" id="presub" type="button" value="Submit" on:click={presubmit}>
 			<br>
 			<label for="confirmation"><h3>Parsed Availability</h3></label>
 			<p>Here's what we got. Make any changes by editing the box above and pressing "Submit" again.</p>
