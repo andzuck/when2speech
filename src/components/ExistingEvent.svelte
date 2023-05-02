@@ -4,12 +4,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
   import { storedData, currentUser, currentEvent } from '../stores.js';
   let eventcode = '';
+  let hasErr = false;
 
   function onClick() {
-    console.log('hay');
+    while (eventcode in $storedData) {
+      eventcode = eventcode + "-1";
+    }
+
     location.href = "/" + eventcode;
-    currentEvent.set(eventcode);
-    console.log($currentEvent);
+    
   };
 
 </script>
