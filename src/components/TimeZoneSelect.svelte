@@ -1,6 +1,7 @@
 <script>
     let timeZone = '-05:00';
 </script>
+<!-- property of user identification concept: time zone -->
 <select name="timezone_offset" required id="timezone-offset" class="span5" bind:value={timeZone}>
     <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
     <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
