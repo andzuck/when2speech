@@ -189,6 +189,7 @@
 			text = '';
 			document.getElementById("confirmation").value = '';
 			document.getElementById("presub").value = "Submit";
+			document.getElementById("confirmation").value = '';
 			presubmitted = false;
 			editedAfterPresubmit = false;
 		}
@@ -223,7 +224,7 @@
 		else{
 			presubmitted = true;
 			editedAfterPresubmit = false;
-			document.getElementById("presub").value = "Resubmit";
+			document.getElementById("presub").value = "Re-Process Rext";
 			availableTimes = processText(text);
 			document.getElementById("confirmation").value = render(availableTimes);
 			document.getElementById("confirmation").style.backgroundColor = "white";
@@ -247,10 +248,7 @@
 				console.log(end);
 				start = start.substring(0, start.indexOf(" GMT")).slice(0,-3);
 				end = end.substring(0, end.indexOf(" GMT")).slice(0,-3);
-				a += start + " to " + end;
-				if (j != v.length - 1) {
-					a += ",\n";
-				}
+				a += start + " to " + end + ",\n";
 			}
 		}
 		return a;
@@ -262,7 +260,8 @@
 		if (presubmitted && editedAfterPresubmit) {
 			console.log("retro really called");
 			document.getElementById("confirmation").style.backgroundColor = "#D3D3D3";
-			document.getElementById("edited").innerText = "Parse is no longer accurate because input has been edited since \"Submit\" was last pressed. To regenerate parsed times, press \"Submit\" again.";
+			document.getElementById("edited").innerText = "Parse is no longer accurate because input has been edited since \"Process Text\" was last pressed. To regenerate parsed times, press \"Process Text\" again.";
+			// document.getElementById("final-submit").addClass('disabled');
 		}
 	}
 	// $: timeArr = text ? makeTimeArr(processText(text)) : Array(24).fill(0).map(() => Array(7).fill(0))
@@ -289,13 +288,13 @@
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
-			<input id="presub" type="button" class="btn btn-primary btn-sm" value="Submit" on:click={presubmit}>
+			<input id="presub" type="button" class="btn btn-primary btn-sm" value="Process Text" on:click={presubmit}>
 			<br>
 			<label for="confirmation"><p class="instructions"><b>Parsed Availability</b>. Here's what we got. Make any changes by editing the box above or re-recording and pressing "Submit" again.</p></label>
 			<textarea style="background-color:white" readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
 			<p id="edited"></p>
-			<input type="button" class="btn btn-primary btn-sm mb-2" value="Submit Final Response" on:click={submit}>
+			<input type="button" id="final-submit" class="btn btn-primary btn-sm mb-2" value="Submit Final Response" on:click={submit}>
 			<br>
 			
 
@@ -418,6 +417,10 @@
 
 	.cf {
 	    *zoom: 1;
+	}
+
+	.disabled{
+	  pointer-events: none;
 	}
 
 </style>
