@@ -7,7 +7,7 @@
   let hasErr = false;
 
   // concept: sharing mechanism
-  // actions: enter event, ensure uniqueness of event code
+  // action: enter event
   function onClick() {
     
     location.href = "/" + eventcode;

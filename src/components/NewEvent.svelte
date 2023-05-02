@@ -30,6 +30,8 @@
     console.log(eventName);
     console.log(dateRange);
     console.log(timeZone);
+
+    // state of sharing mechanism event concept: event created or has errors?
 		
     if (!eventName || !dateRange || dateRange.length == 0 || !timeZone) {
       hasError = true;
@@ -37,11 +39,13 @@
     else {
       hasError = false;
       if (submitted) {
+        // action for sharing mechanism concept: ensure event code uniqueness
         while (eventName in $storedData) {
           eventName = eventName + "-1";
         }
         currentEvent.set(eventName);
         console.log("in handle submit");
+        // properties of sharing mechanism event concept: time zone, date range
         eventProperties.set(Object.assign({}, {[eventName]: {timeZone: timeZone, dateRange: dateRange}}, $eventProperties))
         console.log($eventProperties)
         location.href = "/" + eventName;
@@ -67,15 +71,18 @@
     <form class:submitted on:submit|preventDefault={handleSubmit}>
     <div class="form-element">
         <div><label for="event-name" alt="required"><h2>Event Name</h2></label></div>
+        <!-- property of sharing mechanism event concept: event name, used to generate unique event code -->
         <input class="form-control" required aria-required=”true” id="event-name" bind:value={eventName} oninvalid="this.setCustomValidity('Please enter event name.')" oninput="setCustomValidity('')">
     </div>
     <div class="form-element">
         <div><label for="date-range"><h2>Choose a Date Range</h2></label></div>
+        <!-- property of sharing mechanism event concept: date range -->
         <inclusive-dates id="date-range" range label="Choose a date range" placeholder="Try &quot;June 8 to 12&quot;" show-today-button locale="en-US" disabled="false" input-should-format="input-should-format" show-month-stepper show-clear-button></inclusive-dates>
     </div>
     <div class="form-element">
         <div><label for="time-zone-offset"><h2>Time Zone</h2></label></div>
         <!-- Taken from https://gist.github.com/nodesocket/3919205 -->
+        <!-- property of sharing mechanism event concept: time zone -->
         <select name="timezone_offset" required id="timezone-offset" class="span5" bind:value={timeZone}>
             <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
             <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>

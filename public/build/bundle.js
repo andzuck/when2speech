@@ -13068,7 +13068,7 @@ var app = (function () {
     	return block;
     }
 
-    // (247:3) {:then topTimes}
+    // (249:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*topTimes*/ ctx[24];
@@ -13129,14 +13129,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(247:3) {:then topTimes}",
+    		source: "(249:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (248:3) {#each topTimes as time}
+    // (250:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -13191,15 +13191,15 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[25].accessibleTime);
-    			add_location(time, file$5, 249, 11, 9077);
-    			add_location(b, file$5, 249, 8, 9074);
-    			add_location(br0, file$5, 250, 5, 9197);
-    			add_location(u, file$5, 251, 5, 9207);
-    			add_location(br1, file$5, 251, 34, 9236);
-    			add_location(p, file$5, 249, 5, 9071);
+    			add_location(time, file$5, 251, 11, 9255);
+    			add_location(b, file$5, 251, 8, 9252);
+    			add_location(br0, file$5, 252, 5, 9375);
+    			add_location(u, file$5, 253, 5, 9385);
+    			add_location(br1, file$5, 253, 34, 9414);
+    			add_location(p, file$5, 251, 5, 9249);
     			attr_dev(div, "class", "top-time svelte-17m2dzw");
-    			add_location(div, file$5, 248, 4, 9041);
-    			add_location(br2, file$5, 254, 4, 9280);
+    			add_location(div, file$5, 250, 4, 9219);
+    			add_location(br2, file$5, 256, 4, 9458);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13247,14 +13247,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(248:3) {#each topTimes as time}",
+    		source: "(250:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (245:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (247:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13262,7 +13262,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 245, 4, 8962);
+    			add_location(p, file$5, 247, 4, 9140);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13277,7 +13277,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(245:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(247:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13493,73 +13493,73 @@ var app = (function () {
     			set_style(button, "float", "left");
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary btn-lg");
-    			add_location(button, file$5, 215, 3, 7176);
-    			add_location(h20, file$5, 216, 3, 7315);
-    			add_location(h30, file$5, 217, 3, 7344);
-    			add_location(h31, file$5, 218, 3, 7407);
-    			add_location(h21, file$5, 219, 3, 7472);
-    			add_location(h32, file$5, 221, 38, 7573);
+    			add_location(button, file$5, 217, 3, 7354);
+    			add_location(h20, file$5, 218, 3, 7493);
+    			add_location(h30, file$5, 219, 3, 7522);
+    			add_location(h31, file$5, 220, 3, 7585);
+    			add_location(h21, file$5, 221, 3, 7650);
+    			add_location(h32, file$5, 223, 38, 7751);
     			attr_dev(label0, "id", "name-label");
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "svelte-17m2dzw");
-    			add_location(label0, file$5, 221, 4, 7539);
+    			add_location(label0, file$5, 223, 4, 7717);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "class", "svelte-17m2dzw");
-    			add_location(input0, file$5, 222, 4, 7601);
+    			add_location(input0, file$5, 224, 4, 7779);
     			attr_dev(div0, "class", "name-wrapper svelte-17m2dzw");
-    			add_location(div0, file$5, 220, 3, 7508);
-    			add_location(h33, file$5, 224, 3, 7650);
-    			add_location(b0, file$5, 225, 6, 7697);
-    			add_location(b1, file$5, 225, 29, 7720);
-    			add_location(u0, file$5, 225, 94, 7785);
-    			add_location(i0, file$5, 225, 133, 7824);
-    			add_location(u1, file$5, 225, 186, 7877);
-    			add_location(i1, file$5, 225, 200, 7891);
-    			add_location(i2, file$5, 225, 220, 7911);
-    			add_location(u2, file$5, 225, 238, 7929);
-    			add_location(i3, file$5, 225, 253, 7944);
-    			add_location(p0, file$5, 225, 3, 7694);
+    			add_location(div0, file$5, 222, 3, 7686);
+    			add_location(h33, file$5, 226, 3, 7828);
+    			add_location(b0, file$5, 227, 6, 7875);
+    			add_location(b1, file$5, 227, 29, 7898);
+    			add_location(u0, file$5, 227, 94, 7963);
+    			add_location(i0, file$5, 227, 133, 8002);
+    			add_location(u1, file$5, 227, 186, 8055);
+    			add_location(i1, file$5, 227, 200, 8069);
+    			add_location(i2, file$5, 227, 220, 8089);
+    			add_location(u2, file$5, 227, 238, 8107);
+    			add_location(i3, file$5, 227, 253, 8122);
+    			add_location(p0, file$5, 227, 3, 7872);
     			attr_dev(textarea0, "aria-label", "an input field for your availability");
     			attr_dev(textarea0, "placeholder", "");
     			attr_dev(textarea0, "class", "svelte-17m2dzw");
-    			add_location(textarea0, file$5, 227, 3, 8083);
-    			add_location(br0, file$5, 228, 3, 8208);
+    			add_location(textarea0, file$5, 229, 3, 8261);
+    			add_location(br0, file$5, 230, 3, 8386);
     			attr_dev(input1, "class", "submit svelte-17m2dzw");
     			attr_dev(input1, "id", "presub");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 229, 3, 8216);
-    			add_location(br1, file$5, 230, 3, 8304);
-    			add_location(b2, file$5, 231, 29, 8338);
+    			add_location(input1, file$5, 231, 3, 8394);
+    			add_location(br1, file$5, 232, 3, 8482);
+    			add_location(b2, file$5, 233, 29, 8516);
     			attr_dev(label1, "for", "confirmation");
-    			add_location(label1, file$5, 231, 3, 8312);
-    			add_location(p1, file$5, 231, 63, 8372);
+    			add_location(label1, file$5, 233, 3, 8490);
+    			add_location(p1, file$5, 233, 63, 8550);
     			set_style(textarea1, "background-color", "white");
     			textarea1.readOnly = true;
     			attr_dev(textarea1, "id", "confirmation");
     			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
     			attr_dev(textarea1, "placeholder", "");
     			attr_dev(textarea1, "class", "svelte-17m2dzw");
-    			add_location(textarea1, file$5, 232, 3, 8489);
-    			add_location(br2, file$5, 233, 3, 8641);
+    			add_location(textarea1, file$5, 234, 3, 8667);
+    			add_location(br2, file$5, 235, 3, 8819);
     			attr_dev(p2, "id", "edited");
-    			add_location(p2, file$5, 234, 3, 8649);
+    			add_location(p2, file$5, 236, 3, 8827);
     			attr_dev(input2, "class", "submit svelte-17m2dzw");
     			attr_dev(input2, "type", "button");
     			input2.value = "Submit Final Response";
-    			add_location(input2, file$5, 235, 3, 8672);
-    			add_location(br3, file$5, 236, 3, 8760);
+    			add_location(input2, file$5, 237, 3, 8850);
+    			add_location(br3, file$5, 238, 3, 8938);
     			attr_dev(div1, "class", "input-side svelte-17m2dzw");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 214, 2, 7134);
-    			add_location(h22, file$5, 243, 3, 8901);
+    			add_location(div1, file$5, 216, 2, 7312);
+    			add_location(h22, file$5, 245, 3, 9079);
     			attr_dev(div2, "class", "top-times-side svelte-17m2dzw");
     			attr_dev(div2, "role", "region");
-    			add_location(div2, file$5, 242, 2, 8855);
+    			add_location(div2, file$5, 244, 2, 9033);
     			attr_dev(div3, "class", "cf svelte-17m2dzw");
-    			add_location(div3, file$5, 213, 1, 7115);
+    			add_location(div3, file$5, 215, 1, 7293);
     			attr_dev(main, "class", "svelte-17m2dzw");
-    			add_location(main, file$5, 212, 0, 7107);
+    			add_location(main, file$5, 214, 0, 7285);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13766,6 +13766,9 @@ var app = (function () {
     	let presubmitted = false;
     	let editedAfterPresubmit = false;
     	console.log("top of the interval");
+
+    	// property of sharing mechanism event concept: candidates for ultimate event time
+    	// related functions: topTimesToText, getTimes, postTimes, getAllUserTimes, getTopNIntervals
     	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 
     	// console.log(topIntervals);
@@ -25063,7 +25066,7 @@ var app = (function () {
     const { Object: Object_1, console: console_1, document: document_1 } = globals;
     const file$4 = "src/components/NewEvent.svelte";
 
-    // (123:4) {#if hasError == true}
+    // (130:4) {#if hasError == true}
     function create_if_block(ctx) {
     	let p;
 
@@ -25072,7 +25075,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = `${errMessage}`;
     			attr_dev(p, "class", "error-alert svelte-fu9j4h");
-    			add_location(p, file$4, 123, 8, 6736);
+    			add_location(p, file$4, 130, 8, 7227);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -25087,7 +25090,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(123:4) {#if hasError == true}",
+    		source: "(130:4) {#if hasError == true}",
     		ctx
     	});
 
@@ -25303,30 +25306,30 @@ var app = (function () {
     			add_location(link0, file$4, 1, 1, 15);
     			attr_dev(script, "type", "module");
     			if (!src_url_equal(script.src, script_src_value = "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/esm/inclusive-dates.js")) attr_dev(script, "src", script_src_value);
-    			add_location(script, file$4, 52, 2, 1905);
+    			add_location(script, file$4, 56, 2, 2142);
     			attr_dev(link1, "rel", "stylesheet");
     			attr_dev(link1, "href", "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/themes/light.css");
-    			add_location(link1, file$4, 58, 2, 2064);
-    			add_location(head, file$4, 51, 0, 1896);
-    			add_location(h1, file$4, 65, 4, 2194);
-    			add_location(h20, file$4, 68, 52, 2370);
+    			add_location(link1, file$4, 62, 2, 2301);
+    			add_location(head, file$4, 55, 0, 2133);
+    			add_location(h1, file$4, 69, 4, 2431);
+    			add_location(h20, file$4, 72, 52, 2607);
     			attr_dev(label0, "for", "event-name");
     			attr_dev(label0, "alt", "required");
-    			add_location(label0, file$4, 68, 13, 2331);
-    			add_location(div0, file$4, 68, 8, 2326);
+    			add_location(label0, file$4, 72, 13, 2568);
+    			add_location(div0, file$4, 72, 8, 2563);
     			attr_dev(input, "class", "form-control svelte-fu9j4h");
     			input.required = true;
     			attr_dev(input, "aria-required", "”true”");
     			attr_dev(input, "id", "event-name");
     			attr_dev(input, "oninvalid", "this.setCustomValidity('Please enter event name.')");
     			attr_dev(input, "oninput", "setCustomValidity('')");
-    			add_location(input, file$4, 69, 8, 2412);
+    			add_location(input, file$4, 74, 8, 2758);
     			attr_dev(div1, "class", "form-element svelte-fu9j4h");
-    			add_location(div1, file$4, 67, 4, 2291);
-    			add_location(h21, file$4, 72, 37, 2684);
+    			add_location(div1, file$4, 71, 4, 2528);
+    			add_location(h21, file$4, 77, 37, 3030);
     			attr_dev(label1, "for", "date-range");
-    			add_location(label1, file$4, 72, 13, 2660);
-    			add_location(div2, file$4, 72, 8, 2655);
+    			add_location(label1, file$4, 77, 13, 3006);
+    			add_location(div2, file$4, 77, 8, 3001);
     			set_custom_element_data(inclusive_dates, "id", "date-range");
     			set_custom_element_data(inclusive_dates, "range", "");
     			set_custom_element_data(inclusive_dates, "label", "Choose a date range");
@@ -25337,149 +25340,149 @@ var app = (function () {
     			set_custom_element_data(inclusive_dates, "input-should-format", "input-should-format");
     			set_custom_element_data(inclusive_dates, "show-month-stepper", "");
     			set_custom_element_data(inclusive_dates, "show-clear-button", "");
-    			add_location(inclusive_dates, file$4, 73, 8, 2735);
+    			add_location(inclusive_dates, file$4, 79, 8, 3154);
     			attr_dev(div3, "class", "form-element svelte-fu9j4h");
-    			add_location(div3, file$4, 71, 4, 2620);
-    			add_location(h22, file$4, 76, 43, 3078);
+    			add_location(div3, file$4, 76, 4, 2966);
+    			add_location(h22, file$4, 82, 43, 3497);
     			attr_dev(label2, "for", "time-zone-offset");
-    			add_location(label2, file$4, 76, 13, 3048);
-    			add_location(div4, file$4, 76, 8, 3043);
+    			add_location(label2, file$4, 82, 13, 3467);
+    			add_location(div4, file$4, 82, 8, 3462);
     			option0.__value = "-12:00";
     			option0.value = option0.__value;
-    			add_location(option0, file$4, 79, 12, 3300);
+    			add_location(option0, file$4, 86, 12, 3791);
     			option1.__value = "-11:00";
     			option1.value = option1.__value;
-    			add_location(option1, file$4, 80, 12, 3377);
+    			add_location(option1, file$4, 87, 12, 3868);
     			option2.__value = "-10:00";
     			option2.value = option2.__value;
-    			add_location(option2, file$4, 81, 12, 3455);
+    			add_location(option2, file$4, 88, 12, 3946);
     			option3.__value = "-09:50";
     			option3.value = option3.__value;
-    			add_location(option3, file$4, 82, 12, 3519);
+    			add_location(option3, file$4, 89, 12, 4010);
     			option4.__value = "-09:00";
     			option4.value = option4.__value;
-    			add_location(option4, file$4, 83, 12, 3583);
+    			add_location(option4, file$4, 90, 12, 4074);
     			option5.__value = "-08:00";
     			option5.value = option5.__value;
-    			add_location(option5, file$4, 84, 12, 3646);
+    			add_location(option5, file$4, 91, 12, 4137);
     			option6.__value = "-07:00";
     			option6.value = option6.__value;
-    			add_location(option6, file$4, 85, 12, 3733);
+    			add_location(option6, file$4, 92, 12, 4224);
     			option7.__value = "-06:00";
     			option7.value = option7.__value;
-    			add_location(option7, file$4, 86, 12, 3821);
+    			add_location(option7, file$4, 93, 12, 4312);
     			option8.__value = "-05:00";
     			option8.value = option8.__value;
     			option8.selected = "selected";
-    			add_location(option8, file$4, 87, 12, 3921);
+    			add_location(option8, file$4, 94, 12, 4412);
     			option9.__value = "-04:50";
     			option9.value = option9.__value;
-    			add_location(option9, file$4, 88, 12, 4042);
+    			add_location(option9, file$4, 95, 12, 4533);
     			option10.__value = "-04:00";
     			option10.value = option10.__value;
-    			add_location(option10, file$4, 89, 12, 4106);
+    			add_location(option10, file$4, 96, 12, 4597);
     			option11.__value = "-03:50";
     			option11.value = option11.__value;
-    			add_location(option11, file$4, 90, 12, 4202);
+    			add_location(option11, file$4, 97, 12, 4693);
     			option12.__value = "-03:00";
     			option12.value = option12.__value;
-    			add_location(option12, file$4, 91, 12, 4271);
+    			add_location(option12, file$4, 98, 12, 4762);
     			option13.__value = "-02:00";
     			option13.value = option13.__value;
-    			add_location(option13, file$4, 92, 12, 4360);
+    			add_location(option13, file$4, 99, 12, 4851);
     			option14.__value = "-01:00";
     			option14.value = option14.__value;
-    			add_location(option14, file$4, 93, 12, 4429);
+    			add_location(option14, file$4, 100, 12, 4920);
     			option15.__value = "+00:00";
     			option15.value = option15.__value;
-    			add_location(option15, file$4, 94, 12, 4512);
+    			add_location(option15, file$4, 101, 12, 5003);
     			option16.__value = "+01:00";
     			option16.value = option16.__value;
-    			add_location(option16, file$4, 95, 12, 4610);
+    			add_location(option16, file$4, 102, 12, 5101);
     			option17.__value = "+02:00";
     			option17.value = option17.__value;
-    			add_location(option17, file$4, 96, 12, 4702);
+    			add_location(option17, file$4, 103, 12, 5193);
     			option18.__value = "+03:00";
     			option18.value = option18.__value;
-    			add_location(option18, file$4, 97, 12, 4784);
+    			add_location(option18, file$4, 104, 12, 5275);
     			option19.__value = "+03:50";
     			option19.value = option19.__value;
-    			add_location(option19, file$4, 98, 12, 4880);
+    			add_location(option19, file$4, 105, 12, 5371);
     			option20.__value = "+04:00";
     			option20.value = option20.__value;
-    			add_location(option20, file$4, 99, 12, 4943);
+    			add_location(option20, file$4, 106, 12, 5434);
     			option21.__value = "+04:50";
     			option21.value = option21.__value;
-    			add_location(option21, file$4, 100, 12, 5032);
+    			add_location(option21, file$4, 107, 12, 5523);
     			option22.__value = "+05:00";
     			option22.value = option22.__value;
-    			add_location(option22, file$4, 101, 12, 5094);
+    			add_location(option22, file$4, 108, 12, 5585);
     			option23.__value = "+05:50";
     			option23.value = option23.__value;
-    			add_location(option23, file$4, 102, 12, 5193);
+    			add_location(option23, file$4, 109, 12, 5684);
     			option24.__value = "+05:75";
     			option24.value = option24.__value;
-    			add_location(option24, file$4, 103, 12, 5285);
+    			add_location(option24, file$4, 110, 12, 5776);
     			option25.__value = "+06:00";
     			option25.value = option25.__value;
-    			add_location(option25, file$4, 104, 12, 5360);
+    			add_location(option25, file$4, 111, 12, 5851);
     			option26.__value = "+06:50";
     			option26.value = option26.__value;
-    			add_location(option26, file$4, 105, 12, 5439);
+    			add_location(option26, file$4, 112, 12, 5930);
     			option27.__value = "+07:00";
     			option27.value = option27.__value;
-    			add_location(option27, file$4, 106, 12, 5512);
+    			add_location(option27, file$4, 113, 12, 6003);
     			option28.__value = "+08:00";
     			option28.value = option28.__value;
-    			add_location(option28, file$4, 107, 12, 5592);
+    			add_location(option28, file$4, 114, 12, 6083);
     			option29.__value = "+08:75";
     			option29.value = option29.__value;
-    			add_location(option29, file$4, 108, 12, 5685);
+    			add_location(option29, file$4, 115, 12, 6176);
     			option30.__value = "+09:00";
     			option30.value = option30.__value;
-    			add_location(option30, file$4, 109, 12, 5747);
+    			add_location(option30, file$4, 116, 12, 6238);
     			option31.__value = "+09:50";
     			option31.value = option31.__value;
-    			add_location(option31, file$4, 110, 12, 5841);
+    			add_location(option31, file$4, 117, 12, 6332);
     			option32.__value = "+10:00";
     			option32.value = option32.__value;
-    			add_location(option32, file$4, 111, 12, 5914);
+    			add_location(option32, file$4, 118, 12, 6405);
     			option33.__value = "+10:50";
     			option33.value = option33.__value;
-    			add_location(option33, file$4, 112, 12, 6008);
+    			add_location(option33, file$4, 119, 12, 6499);
     			option34.__value = "+11:00";
     			option34.value = option34.__value;
-    			add_location(option34, file$4, 113, 12, 6082);
+    			add_location(option34, file$4, 120, 12, 6573);
     			option35.__value = "+11:50";
     			option35.value = option35.__value;
-    			add_location(option35, file$4, 114, 12, 6179);
+    			add_location(option35, file$4, 121, 12, 6670);
     			option36.__value = "+12:00";
     			option36.value = option36.__value;
-    			add_location(option36, file$4, 115, 12, 6251);
+    			add_location(option36, file$4, 122, 12, 6742);
     			option37.__value = "+12:75";
     			option37.value = option37.__value;
-    			add_location(option37, file$4, 116, 12, 6346);
+    			add_location(option37, file$4, 123, 12, 6837);
     			option38.__value = "+13:00";
     			option38.value = option38.__value;
-    			add_location(option38, file$4, 117, 12, 6419);
+    			add_location(option38, file$4, 124, 12, 6910);
     			option39.__value = "+14:00";
     			option39.value = option39.__value;
-    			add_location(option39, file$4, 118, 12, 6492);
+    			add_location(option39, file$4, 125, 12, 6983);
     			attr_dev(select, "name", "timezone_offset");
     			select.required = true;
     			attr_dev(select, "id", "timezone-offset");
     			attr_dev(select, "class", "span5");
     			if (/*timeZone*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[6].call(select));
-    			add_location(select, file$4, 78, 8, 3190);
+    			add_location(select, file$4, 85, 8, 3681);
     			attr_dev(div5, "class", "form-element svelte-fu9j4h");
-    			add_location(div5, file$4, 75, 4, 3008);
+    			add_location(div5, file$4, 81, 4, 3427);
     			attr_dev(button, "type", "submit");
     			attr_dev(button, "class", "btn btn-primary btn-lg");
-    			add_location(button, file$4, 121, 4, 6592);
+    			add_location(button, file$4, 128, 4, 7083);
     			attr_dev(form, "class", "svelte-fu9j4h");
     			toggle_class(form, "submitted", /*submitted*/ ctx[3]);
-    			add_location(form, file$4, 66, 4, 2224);
-    			add_location(main, file$4, 64, 0, 2183);
+    			add_location(form, file$4, 70, 4, 2461);
+    			add_location(main, file$4, 68, 0, 2420);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25658,19 +25661,24 @@ var app = (function () {
     		console.log(dateRange);
     		console.log(timeZone);
 
+    		// state of sharing mechanism event concept: event created or has errors?
     		if (!eventName || !dateRange || dateRange.length == 0 || !timeZone) {
     			$$invalidate(2, hasError = true);
     		} else {
     			$$invalidate(2, hasError = false);
 
     			if (submitted) {
+    				// action for sharing mechanism concept: ensure event code uniqueness
     				while (eventName in $storedData) {
     					$$invalidate(0, eventName = eventName + "-1");
     				}
 
     				currentEvent.set(eventName);
     				console.log("in handle submit");
+
+    				// properties of sharing mechanism event concept: time zone, date range
     				eventProperties.set(Object.assign({}, { [eventName]: { timeZone, dateRange } }, $eventProperties));
+
     				console.log($eventProperties);
     				location.href = "/" + eventName;
     			}
@@ -25818,28 +25826,28 @@ var app = (function () {
     			add_location(link0, file$3, 1, 1, 15);
     			attr_dev(script, "type", "module");
     			if (!src_url_equal(script.src, script_src_value = "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/esm/inclusive-dates.js")) attr_dev(script, "src", script_src_value);
-    			add_location(script, file$3, 18, 2, 744);
+    			add_location(script, file$3, 18, 2, 710);
     			attr_dev(link1, "rel", "stylesheet");
     			attr_dev(link1, "href", "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/themes/light.css");
-    			add_location(link1, file$3, 24, 2, 903);
-    			add_location(head, file$3, 17, 0, 735);
-    			add_location(h3, file$3, 33, 30, 1126);
+    			add_location(link1, file$3, 24, 2, 869);
+    			add_location(head, file$3, 17, 0, 701);
+    			add_location(h3, file$3, 33, 30, 1092);
     			attr_dev(label, "for", "event-code");
-    			add_location(label, file$3, 33, 6, 1102);
-    			add_location(br0, file$3, 34, 6, 1175);
+    			add_location(label, file$3, 33, 6, 1068);
+    			add_location(br0, file$3, 34, 6, 1141);
     			attr_dev(input, "id", "event-code");
-    			add_location(input, file$3, 36, 6, 1236);
-    			add_location(br1, file$3, 37, 6, 1289);
-    			add_location(br2, file$3, 38, 6, 1300);
+    			add_location(input, file$3, 36, 6, 1202);
+    			add_location(br1, file$3, 37, 6, 1255);
+    			add_location(br2, file$3, 38, 6, 1266);
     			attr_dev(div0, "class", "existing-event");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$3, 32, 4, 1053);
+    			add_location(div0, file$3, 32, 4, 1019);
     			attr_dev(div1, "class", "cf");
-    			add_location(div1, file$3, 31, 4, 1032);
+    			add_location(div1, file$3, 31, 4, 998);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary btn-lg");
-    			add_location(button, file$3, 43, 4, 1416);
-    			add_location(div2, file$3, 30, 0, 1022);
+    			add_location(button, file$3, 43, 4, 1382);
+    			add_location(div2, file$3, 30, 0, 988);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25914,7 +25922,7 @@ var app = (function () {
     	let hasErr = false;
 
     	// concept: sharing mechanism
-    	// actions: enter event, ensure uniqueness of event code
+    	// action: enter event
     	function onClick() {
     		location.href = "/" + eventcode;
     	}
