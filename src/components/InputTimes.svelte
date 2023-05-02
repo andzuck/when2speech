@@ -1,5 +1,9 @@
-<script>
+<svelte:head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</svelte:head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
 	import VoiceRecognition from './VoiceRecognition.svelte'
+	import TimeZoneSelect from './TimeZoneSelect.svelte'
 	import {processText, makeTimeArr, getTopNIntervals} from '../helpers.js';
 	import Table from './Table.svelte';
 	import { storedData, currentUser, currentEvent, eventProperties } from '../stores.js';
@@ -14,6 +18,26 @@
 	import accessibleDate from 'accessible-date';
 	let presubmitted = false;
 	let editedAfterPresubmit = false;
+
+	// Create Event Date Range String + Accessible String
+	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	const startDate = new Date($eventProperties[eventID].dateRange[0]);
+	const endDate = new Date($eventProperties[eventID].dateRange[1]);
+	let dateRangeString = months[startDate.getMonth()] + " " + startDate.getDate() + " " + startDate.getFullYear();
+	dateRangeString += " - " + months[endDate.getMonth()] + " " + endDate.getDate() + " " + endDate.getFullYear();
+
+	console.log($eventProperties[eventID].dateRange);
+	let accessibleDateRangeString = accessibleDate($eventProperties[eventID].dateRange[0], {
+			    format: `M D Y to `,
+			    language: `en`,
+			    military: false
+			});
+	accessibleDateRangeString += " " + accessibleDate($eventProperties[eventID].dateRange[1], {
+			    format: `M D Y`,
+			    language: `en`,
+			    military: false
+			});
+	console.log(accessibleDateRangeString);
 
 
 	console.log("top of the interval")
@@ -221,9 +245,12 @@
 				// remove timezone from confirmation text
 				console.log(start);
 				console.log(end);
-				start = start.substring(0, start.indexOf(" ("));
-				end = end.substring(0, end.indexOf(" ("));
-				a += start + " to " + end + ",\n";
+				start = start.substring(0, start.indexOf(" GMT")).slice(0,-3);
+				end = end.substring(0, end.indexOf(" GMT")).slice(0,-3);
+				a += start + " to " + end;
+				if (j != v.length - 1) {
+					a += ",\n";
+				}
 			}
 		}
 		return a;
@@ -243,30 +270,32 @@
 
 </script>
 
+
+<!-- TODO: create error message to render if user routes to event that doesn't exist -->
 <main>
 	<div class="cf">
+		<button type="button" class="btn btn-primary btn-lg mb-3" on:click={() => location.href = "/"}>Back to Home Page</button>
 		<div class="input-side" role="region">
-			<button style="float:left" type="button" class="btn btn-primary btn-lg" on:click={() => location.href = "/"}>Back to Home Page</button>
-			<h2>Event: {eventID}</h2>
-			<h3>Date Range: {$eventProperties[eventID].dateRange} </h3>
-			<h3>Time Zone: GMT {$eventProperties[eventID].timeZone} </h3>
-			<h2>Share Your Availability</h2>
+			<h2 id="event-name">{$eventProperties[eventID].eventName}</h2>
+			<p>Event Code: {eventID}</p>
+			<p aria-label={accessibleDateRangeString}>{dateRangeString} </p>
+			<h3>Share Your Availability</h3>
 			<div class="name-wrapper">
 				<label id="name-label" for="name"><h3>Name: </h3></label>
 				<input id="name" bind:value={name}>
 			</div>
-			<h3>When are you available to meet?</h3>
-			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
+			<TimeZoneSelect></TimeZoneSelect>
+			<p class="instructions"><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
-			<input class="submit" id="presub" type="button" value="Submit" on:click={presubmit}>
+			<input id="presub" type="button" class="btn btn-primary btn-sm" value="Submit" on:click={presubmit}>
 			<br>
-			<label for="confirmation"><b>Parsed Availability</b></label><p>Here's what we got. Make any changes by editing the box above or re-recording and pressing "Submit" again.</p>
+			<label for="confirmation"><p class="instructions"><b>Parsed Availability</b>. Here's what we got. Make any changes by editing the box above or re-recording and pressing "Submit" again.</p></label>
 			<textarea style="background-color:white" readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
 			<p id="edited"></p>
-			<input class="submit" type="button" value="Submit Final Response" on:click={submit}>
+			<input type="button" class="btn btn-primary btn-sm mb-2" value="Submit Final Response" on:click={submit}>
 			<br>
 			
 
@@ -306,6 +335,10 @@
 		font-weight: 100;
 	}
 
+	p {
+		margin-bottom: 4px;
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
@@ -314,25 +347,37 @@
 
 	textarea {
 		height: 150px;
-		max-width: 350px;
+		width: 80%;
+	    max-width: 350px;
+	    min-width: 200px;
 		padding-bottom: 150px;
+	}
+
+	h2 {
+		margin-top: 5px;
 	}
 
 	.name-wrapper {
 		display: flex;
 		justify-content: center;
+
+	}
+
+	.name-wrapper h3 {
+		margin-top: 5px;
 	}
 
 	#name {
-/*		height:;*/
+		height: 35px;
 	}
 
 	#name-label {
-		padding-right: 30px;
+		padding-right: 15px;
 	}
 
-	.submit {
-		font-size: 1.7em;
+	.instructions {
+		max-width: 85%;
+		margin: 10px auto;
 	}
 
 	.input-side {

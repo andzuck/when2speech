@@ -40,15 +40,17 @@
       hasError = false;
       if (submitted) {
         // action for sharing mechanism concept: ensure event code uniqueness
-        while (eventName in $storedData) {
-          eventName = eventName + "-1";
+        let eventID = Math.random().toString(36).substring(2,7).toUpperCase();
+        while (eventID in $storedData) {
+          eventID = Math.random().toString(36).substring(2,7).toUpperCase();
         }
-        currentEvent.set(eventName);
+        currentEvent.set(eventID);
         console.log("in handle submit");
         // properties of sharing mechanism event concept: time zone, date range
-        eventProperties.set(Object.assign({}, {[eventName]: {timeZone: timeZone, dateRange: dateRange}}, $eventProperties))
-        console.log($eventProperties)
-        location.href = "/" + eventName;
+        eventProperties.set(Object.assign({}, {[eventID]: {timeZone: timeZone, dateRange: dateRange, eventName: eventName}}, $eventProperties))
+        console.log($eventProperties);console
+
+        location.href = "/" + eventID;
       }
     }
 	}
