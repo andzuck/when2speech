@@ -18,26 +18,31 @@
 	import accessibleDate from 'accessible-date';
 	let presubmitted = false;
 	let editedAfterPresubmit = false;
+	let dateRangeString = '';
+	let accessibleDateRangeString = '';
 
 	// Create Event Date Range String + Accessible String
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	const startDate = new Date($eventProperties[eventID].dateRange[0]);
-	const endDate = new Date($eventProperties[eventID].dateRange[1]);
-	let dateRangeString = months[startDate.getMonth()] + " " + startDate.getDate() + " " + startDate.getFullYear();
-	dateRangeString += " - " + months[endDate.getMonth()] + " " + endDate.getDate() + " " + endDate.getFullYear();
 
-	console.log($eventProperties[eventID].dateRange);
-	let accessibleDateRangeString = accessibleDate($eventProperties[eventID].dateRange[0], {
-			    format: `M D Y to `,
-			    language: `en`,
-			    military: false
-			});
-	accessibleDateRangeString += " " + accessibleDate($eventProperties[eventID].dateRange[1], {
-			    format: `M D Y`,
-			    language: `en`,
-			    military: false
-			});
-	console.log(accessibleDateRangeString);
+	if ($eventProperties[eventID]) {
+		const startDate = new Date($eventProperties[eventID].dateRange[0]);
+		const endDate = new Date($eventProperties[eventID].dateRange[1]);
+		dateRangeString = months[startDate.getMonth()] + " " + startDate.getDate() + " " + startDate.getFullYear();
+		dateRangeString += " - " + months[endDate.getMonth()] + " " + endDate.getDate() + " " + endDate.getFullYear();
+
+		console.log($eventProperties[eventID].dateRange);
+		accessibleDateRangeString = accessibleDate($eventProperties[eventID].dateRange[0], {
+				    format: `M D Y to `,
+				    language: `en`,
+				    military: false
+				});
+		accessibleDateRangeString += " " + accessibleDate($eventProperties[eventID].dateRange[1], {
+				    format: `M D Y`,
+				    language: `en`,
+				    military: false
+				});
+		console.log(accessibleDateRangeString);
+	}
 
 
 	console.log("top of the interval")
@@ -274,6 +279,7 @@
 <main>
 	<div class="cf">
 		<button type="button" class="btn btn-primary btn-lg mb-3" on:click={() => location.href = "/"}>Back to Home Page</button>
+		{#if $eventProperties[eventID]}
 		<div class="input-side" role="region">
 			<h2 id="event-name">{$eventProperties[eventID].eventName}</h2>
 			<p>Event Code: {eventID}</p>
@@ -294,6 +300,7 @@
 			<textarea style="background-color:white" readonly id = "confirmation" aria-label="an input field to confirm availability" placeholder=""></textarea>
 			<br>
 			<p id="edited"></p>
+			<!-- TODO, change color of final submit and make unclickable if input text was changed-->
 			<input type="button" id="final-submit" class="btn btn-primary btn-sm mb-2" value="Submit Final Response" on:click={submit}>
 			<br>
 			
@@ -316,7 +323,10 @@
 				<br>
 			{/each}
 			{/await}
-	</div>
+		</div>
+		{:else}
+			<h1>Event does not exist.</h1>
+		{/if}
 	</div>
 	</main>
 
