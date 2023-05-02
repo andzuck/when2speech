@@ -10,3 +10,4 @@ Right now, this app only works on Google Chrome because of the speech recognitio
 - https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable  
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign  
 - https://stackoverflow.com/questions/74690881/is-there-a-way-to-store-my-svelte-store-in-local-storage-so-it-doesnt-reset-on  
+- additional references cited in-line
