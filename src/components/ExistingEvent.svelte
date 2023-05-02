@@ -6,11 +6,10 @@
   let eventcode = '';
   let hasErr = false;
 
+  // concept: sharing mechanism
+  // actions: enter event, ensure uniqueness of event code
   function onClick() {
-    while (eventcode in $storedData) {
-      eventcode = eventcode + "-1";
-    }
-
+    
     location.href = "/" + eventcode;
     
   };
@@ -34,11 +33,14 @@
     <div class="existing-event" role="region">
       <label for="event-code"><h3>Enter Existing Event Code</h3></label>
       <br>
+      <!-- concept: sharing mechanism (event) -->
       <input id="event-code" bind:value={eventcode}>
       <br>
       <br>
     </div>
   </div>
+    <!-- concept: sharing mechanism (event) -->
+    <!-- related function: onClick -->
     <button on:click={onClick} type="button" class="btn btn-primary btn-lg">Enter Event</button>
 </div>
 

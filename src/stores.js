@@ -5,3 +5,4 @@ import { persisted } from 'svelte-local-storage-store'
 export let storedData = persisted('storedData', {});
 export let currentUser = persisted('currentUser', "");
 export let currentEvent = persisted('currentEvent', "");
+export let eventProperties = persisted('eventProperties', {});
