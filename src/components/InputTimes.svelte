@@ -17,6 +17,8 @@
 
 
 	console.log("top of the interval")
+	// property of sharing mechanism event concept: candidates for ultimate event time
+	// related functions: topTimesToText, getTimes, postTimes, getAllUserTimes, getTopNIntervals
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 	// console.log(topIntervals);
 	getTimes();
