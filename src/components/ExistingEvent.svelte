@@ -9,6 +9,7 @@
     console.log('hay');
     location.href = "/" + eventcode;
     currentEvent.set(eventcode);
+    console.log($currentEvent);
   };
 
 </script>

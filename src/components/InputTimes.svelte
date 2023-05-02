@@ -14,6 +14,8 @@
 	let presubmitted = false;
 	let editedAfterPresubmit = false;
 
+
+	console.log("top of the interval")
 	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 	// console.log(topIntervals);
 	getTimes();
@@ -79,6 +81,7 @@
 
 	function getTimes(){
 		currentEvent.set(location.href.split("/")[3]);
+		console.log($currentEvent);
 		let data;
 		if ($currentEvent in $storedData) {
 			data = $storedData[$currentEvent];
@@ -86,7 +89,8 @@
 			data = {};
 			storedData.set(Object.assign({}, {[$currentEvent]: {}}, $storedData));
 		}
-		
+		console.log("whatup");
+		console.log($storedData);
 		// const data = db.read()
 		return data
 	}

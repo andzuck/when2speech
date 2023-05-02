@@ -59,6 +59,11 @@ var app = (function () {
         const unsub = store.subscribe(...callbacks);
         return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
     }
+    function get_store_value(store) {
+        let value;
+        subscribe(store, _ => value = _)();
+        return value;
+    }
     function component_subscribe(component, store, callback) {
         component.$$.on_destroy.push(subscribe(store, callback));
     }
@@ -12831,10 +12836,56 @@ var app = (function () {
     	}
     }
 
+    // index.ts
+    var stores = {};
+    function getStorage(type) {
+      return type === "local" ? localStorage : sessionStorage;
+    }
+    function persisted(key, initialValue, options) {
+      const serializer = (options == null ? void 0 : options.serializer) ?? JSON;
+      const storageType = (options == null ? void 0 : options.storage) ?? "local";
+      const browser = typeof window !== "undefined" && typeof document !== "undefined";
+      function updateStorage(key2, value) {
+        if (!browser)
+          return;
+        getStorage(storageType).setItem(key2, serializer.stringify(value));
+      }
+      if (!stores[key]) {
+        const store = writable(initialValue, (set2) => {
+          const json = browser ? getStorage(storageType).getItem(key) : null;
+          if (json) {
+            set2(serializer.parse(json));
+          }
+          if (browser) {
+            const handleStorage = (event) => {
+              if (event.key === key)
+                set2(event.newValue ? serializer.parse(event.newValue) : null);
+            };
+            window.addEventListener("storage", handleStorage);
+            return () => window.removeEventListener("storage", handleStorage);
+          }
+        });
+        const { subscribe, set } = store;
+        stores[key] = {
+          set(value) {
+            updateStorage(key, value);
+            set(value);
+          },
+          update(updater) {
+            const value = updater(get_store_value(store));
+            updateStorage(key, value);
+            set(value);
+          },
+          subscribe
+        };
+      }
+      return stores[key];
+    }
+
     // concept: log in by name
-    let storedData = writable({});
-    let currentUser = writable("");
-    let currentEvent = writable("");
+    let storedData = persisted('storedData', {});
+    let currentUser = persisted('currentUser', "");
+    let currentEvent = persisted('currentEvent', "");
 
     var accessibleDate = function accessibleDate(date, options) {
 
@@ -13016,7 +13067,7 @@ var app = (function () {
     	return block;
     }
 
-    // (241:3) {:then topTimes}
+    // (245:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*topTimes*/ ctx[23];
@@ -13077,14 +13128,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(241:3) {:then topTimes}",
+    		source: "(245:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (242:3) {#each topTimes as time}
+    // (246:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -13139,15 +13190,15 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[24].accessibleTime);
-    			add_location(time, file$5, 243, 11, 8815);
-    			add_location(b, file$5, 243, 8, 8812);
-    			add_location(br0, file$5, 244, 5, 8935);
-    			add_location(u, file$5, 245, 5, 8945);
-    			add_location(br1, file$5, 245, 34, 8974);
-    			add_location(p, file$5, 243, 5, 8809);
+    			add_location(time, file$5, 247, 11, 8932);
+    			add_location(b, file$5, 247, 8, 8929);
+    			add_location(br0, file$5, 248, 5, 9052);
+    			add_location(u, file$5, 249, 5, 9062);
+    			add_location(br1, file$5, 249, 34, 9091);
+    			add_location(p, file$5, 247, 5, 8926);
     			attr_dev(div, "class", "top-time svelte-17m2dzw");
-    			add_location(div, file$5, 242, 4, 8779);
-    			add_location(br2, file$5, 248, 4, 9018);
+    			add_location(div, file$5, 246, 4, 8896);
+    			add_location(br2, file$5, 252, 4, 9135);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13195,14 +13246,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(242:3) {#each topTimes as time}",
+    		source: "(246:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (239:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (243:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13210,7 +13261,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Processing Times...";
-    			add_location(p, file$5, 239, 4, 8700);
+    			add_location(p, file$5, 243, 4, 8817);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13225,7 +13276,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(239:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(243:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13423,71 +13474,71 @@ var app = (function () {
     			set_style(button, "float", "left");
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary btn-lg");
-    			add_location(button, file$5, 211, 3, 7042);
-    			add_location(h20, file$5, 212, 3, 7181);
-    			add_location(h21, file$5, 213, 3, 7210);
-    			add_location(h30, file$5, 215, 38, 7311);
+    			add_location(button, file$5, 215, 3, 7159);
+    			add_location(h20, file$5, 216, 3, 7298);
+    			add_location(h21, file$5, 217, 3, 7327);
+    			add_location(h30, file$5, 219, 38, 7428);
     			attr_dev(label0, "id", "name-label");
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "svelte-17m2dzw");
-    			add_location(label0, file$5, 215, 4, 7277);
+    			add_location(label0, file$5, 219, 4, 7394);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "class", "svelte-17m2dzw");
-    			add_location(input0, file$5, 216, 4, 7339);
+    			add_location(input0, file$5, 220, 4, 7456);
     			attr_dev(div0, "class", "name-wrapper svelte-17m2dzw");
-    			add_location(div0, file$5, 214, 3, 7246);
-    			add_location(h31, file$5, 218, 3, 7388);
-    			add_location(b0, file$5, 219, 6, 7435);
-    			add_location(b1, file$5, 219, 29, 7458);
-    			add_location(u0, file$5, 219, 94, 7523);
-    			add_location(i0, file$5, 219, 133, 7562);
-    			add_location(u1, file$5, 219, 186, 7615);
-    			add_location(i1, file$5, 219, 200, 7629);
-    			add_location(i2, file$5, 219, 220, 7649);
-    			add_location(u2, file$5, 219, 238, 7667);
-    			add_location(i3, file$5, 219, 253, 7682);
-    			add_location(p0, file$5, 219, 3, 7432);
+    			add_location(div0, file$5, 218, 3, 7363);
+    			add_location(h31, file$5, 222, 3, 7505);
+    			add_location(b0, file$5, 223, 6, 7552);
+    			add_location(b1, file$5, 223, 29, 7575);
+    			add_location(u0, file$5, 223, 94, 7640);
+    			add_location(i0, file$5, 223, 133, 7679);
+    			add_location(u1, file$5, 223, 186, 7732);
+    			add_location(i1, file$5, 223, 200, 7746);
+    			add_location(i2, file$5, 223, 220, 7766);
+    			add_location(u2, file$5, 223, 238, 7784);
+    			add_location(i3, file$5, 223, 253, 7799);
+    			add_location(p0, file$5, 223, 3, 7549);
     			attr_dev(textarea0, "aria-label", "an input field for your availability");
     			attr_dev(textarea0, "placeholder", "");
     			attr_dev(textarea0, "class", "svelte-17m2dzw");
-    			add_location(textarea0, file$5, 221, 3, 7821);
-    			add_location(br0, file$5, 222, 3, 7946);
+    			add_location(textarea0, file$5, 225, 3, 7938);
+    			add_location(br0, file$5, 226, 3, 8063);
     			attr_dev(input1, "class", "submit svelte-17m2dzw");
     			attr_dev(input1, "id", "presub");
     			attr_dev(input1, "type", "button");
     			input1.value = "Submit";
-    			add_location(input1, file$5, 223, 3, 7954);
-    			add_location(br1, file$5, 224, 3, 8042);
-    			add_location(b2, file$5, 225, 29, 8076);
+    			add_location(input1, file$5, 227, 3, 8071);
+    			add_location(br1, file$5, 228, 3, 8159);
+    			add_location(b2, file$5, 229, 29, 8193);
     			attr_dev(label1, "for", "confirmation");
-    			add_location(label1, file$5, 225, 3, 8050);
-    			add_location(p1, file$5, 225, 63, 8110);
+    			add_location(label1, file$5, 229, 3, 8167);
+    			add_location(p1, file$5, 229, 63, 8227);
     			set_style(textarea1, "background-color", "white");
     			textarea1.readOnly = true;
     			attr_dev(textarea1, "id", "confirmation");
     			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
     			attr_dev(textarea1, "placeholder", "");
     			attr_dev(textarea1, "class", "svelte-17m2dzw");
-    			add_location(textarea1, file$5, 226, 3, 8227);
-    			add_location(br2, file$5, 227, 3, 8379);
+    			add_location(textarea1, file$5, 230, 3, 8344);
+    			add_location(br2, file$5, 231, 3, 8496);
     			attr_dev(p2, "id", "edited");
-    			add_location(p2, file$5, 228, 3, 8387);
+    			add_location(p2, file$5, 232, 3, 8504);
     			attr_dev(input2, "class", "submit svelte-17m2dzw");
     			attr_dev(input2, "type", "button");
     			input2.value = "Submit Final Response";
-    			add_location(input2, file$5, 229, 3, 8410);
-    			add_location(br3, file$5, 230, 3, 8498);
+    			add_location(input2, file$5, 233, 3, 8527);
+    			add_location(br3, file$5, 234, 3, 8615);
     			attr_dev(div1, "class", "input-side svelte-17m2dzw");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 210, 2, 7000);
-    			add_location(h22, file$5, 237, 3, 8639);
+    			add_location(div1, file$5, 214, 2, 7117);
+    			add_location(h22, file$5, 241, 3, 8756);
     			attr_dev(div2, "class", "top-times-side svelte-17m2dzw");
     			attr_dev(div2, "role", "region");
-    			add_location(div2, file$5, 236, 2, 8593);
+    			add_location(div2, file$5, 240, 2, 8710);
     			attr_dev(div3, "class", "cf svelte-17m2dzw");
-    			add_location(div3, file$5, 209, 1, 6981);
+    			add_location(div3, file$5, 213, 1, 7098);
     			attr_dev(main, "class", "svelte-17m2dzw");
-    			add_location(main, file$5, 208, 0, 6973);
+    			add_location(main, file$5, 212, 0, 7090);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13680,6 +13731,7 @@ var app = (function () {
     	let API_BASE = 'http://localhost:3001';
     	let presubmitted = false;
     	let editedAfterPresubmit = false;
+    	console.log("top of the interval");
     	let topIntervals = getTopNIntervals(getAllUserTimes(true), 5);
 
     	// console.log(topIntervals);
@@ -13762,6 +13814,7 @@ var app = (function () {
     	// };
     	function getTimes() {
     		currentEvent.set(location.href.split("/")[3]);
+    		console.log($currentEvent);
     		let data;
 
     		if ($currentEvent in $storedData) {
@@ -13770,6 +13823,9 @@ var app = (function () {
     			data = {};
     			storedData.set(Object.assign({}, { [$currentEvent]: {} }, $storedData));
     		}
+
+    		console.log("whatup");
+    		console.log($storedData);
 
     		// const data = db.read()
     		return data;
@@ -25712,28 +25768,28 @@ var app = (function () {
     			add_location(link0, file$3, 1, 1, 15);
     			attr_dev(script, "type", "module");
     			if (!src_url_equal(script.src, script_src_value = "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/esm/inclusive-dates.js")) attr_dev(script, "src", script_src_value);
-    			add_location(script, file$3, 15, 2, 678);
+    			add_location(script, file$3, 16, 2, 710);
     			attr_dev(link1, "rel", "stylesheet");
     			attr_dev(link1, "href", "https://cdn.jsdelivr.net/npm/inclusive-dates/dist/themes/light.css");
-    			add_location(link1, file$3, 21, 2, 837);
-    			add_location(head, file$3, 14, 0, 669);
-    			add_location(h3, file$3, 30, 30, 1060);
+    			add_location(link1, file$3, 22, 2, 869);
+    			add_location(head, file$3, 15, 0, 701);
+    			add_location(h3, file$3, 31, 30, 1092);
     			attr_dev(label, "for", "event-code");
-    			add_location(label, file$3, 30, 6, 1036);
-    			add_location(br0, file$3, 31, 6, 1109);
+    			add_location(label, file$3, 31, 6, 1068);
+    			add_location(br0, file$3, 32, 6, 1141);
     			attr_dev(input, "id", "event-code");
-    			add_location(input, file$3, 32, 6, 1120);
-    			add_location(br1, file$3, 33, 6, 1173);
-    			add_location(br2, file$3, 34, 6, 1184);
+    			add_location(input, file$3, 33, 6, 1152);
+    			add_location(br1, file$3, 34, 6, 1205);
+    			add_location(br2, file$3, 35, 6, 1216);
     			attr_dev(div0, "class", "existing-event");
     			attr_dev(div0, "role", "region");
-    			add_location(div0, file$3, 29, 4, 987);
+    			add_location(div0, file$3, 30, 4, 1019);
     			attr_dev(div1, "class", "cf");
-    			add_location(div1, file$3, 28, 4, 966);
+    			add_location(div1, file$3, 29, 4, 998);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary btn-lg");
-    			add_location(button, file$3, 37, 4, 1213);
-    			add_location(div2, file$3, 27, 0, 956);
+    			add_location(button, file$3, 38, 4, 1245);
+    			add_location(div2, file$3, 28, 0, 988);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25802,6 +25858,9 @@ var app = (function () {
     }
 
     function instance$3($$self, $$props, $$invalidate) {
+    	let $currentEvent;
+    	validate_store(currentEvent, 'currentEvent');
+    	component_subscribe($$self, currentEvent, $$value => $$invalidate(3, $currentEvent = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('ExistingEvent', slots, []);
     	let eventcode = '';
@@ -25810,6 +25869,7 @@ var app = (function () {
     		console.log('hay');
     		location.href = "/" + eventcode;
     		currentEvent.set(eventcode);
+    		console.log($currentEvent);
     	}
     	const writable_props = [];
 
@@ -25827,7 +25887,8 @@ var app = (function () {
     		currentUser,
     		currentEvent,
     		eventcode,
-    		onClick
+    		onClick,
+    		$currentEvent
     	});
 
     	$$self.$inject_state = $$props => {
