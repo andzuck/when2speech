@@ -2,7 +2,7 @@
 	import VoiceRecognition from './VoiceRecognition.svelte'
 	import {processText, makeTimeArr, getTopNIntervals} from '../helpers.js';
 	import Table from './Table.svelte';
-	import { storedData, currentUser, currentEvent } from '../stores.js';
+	import { storedData, currentUser, currentEvent, eventProperties } from '../stores.js';
 
 	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	export let eventID;
@@ -215,6 +215,8 @@
 		<div class="input-side" role="region">
 			<button style="float:left" type="button" class="btn btn-primary btn-lg" on:click={() => location.href = "/"}>Back to Home Page</button>
 			<h2>Event: {eventID}</h2>
+			<h3>Date Range: {$eventProperties[eventID].dateRange} </h3>
+			<h3>Time Zone: GMT {$eventProperties[eventID].timeZone} </h3>
 			<h2>Share Your Availability</h2>
 			<div class="name-wrapper">
 				<label id="name-label" for="name"><h3>Name: </h3></label>

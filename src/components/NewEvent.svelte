@@ -43,6 +43,7 @@
         currentEvent.set(eventName);
         console.log("in handle submit");
         eventProperties.set(Object.assign({}, {[eventName]: {timeZone: timeZone, dateRange: dateRange}}, $eventProperties))
+        console.log($eventProperties)
         location.href = "/" + eventName;
       }
     }
