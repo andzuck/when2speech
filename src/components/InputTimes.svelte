@@ -224,7 +224,7 @@
 		else{
 			presubmitted = true;
 			editedAfterPresubmit = false;
-			document.getElementById("presub").value = "Re-Process Rext";
+			document.getElementById("presub").value = "Re-Process Text";
 			availableTimes = processText(text);
 			document.getElementById("confirmation").value = render(availableTimes);
 			document.getElementById("confirmation").style.backgroundColor = "white";
