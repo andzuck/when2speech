@@ -2,7 +2,7 @@
 	import VoiceRecognition from './VoiceRecognition.svelte'
 	import {processText, makeTimeArr, getTopNIntervals} from '../helpers.js';
 	import Table from './Table.svelte';
-	import { storedData, currentUser } from '../stores.js';
+	import { storedData, currentUser, currentEvent } from '../stores.js';
 
 	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	export let eventID;
@@ -78,10 +78,16 @@
 
 
 	function getTimes(){
-		const data = $storedData;
+		currentEvent.set(location.href.split("/")[3]);
+		let data;
+		if ($currentEvent in $storedData) {
+			data = $storedData[$currentEvent];
+		} else {
+			data = {};
+			storedData.set(Object.assign({}, {[$currentEvent]: {}}, $storedData));
+		}
+		
 		// const data = db.read()
-		console.log('in get times. data:');
-		console.log(data);
 		return data
 	}
 
@@ -93,10 +99,14 @@
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({name: username, times: strUserTimes})
 		}
-		const localData = {[username]: strUserTimes}
+		const localData = {[username]: strUserTimes};
+		const localDataWithEvent = {[$currentEvent]: Object.assign({}, $storedData[$currentEvent], localData)}
+		console.log($currentEvent);
 		console.log(localData);
-		storedData.set(Object.assign({}, localData, $storedData));
+		storedData.set(Object.assign({}, $storedData, localDataWithEvent));
 		// db.write(localData)
+		console.log(localDataWithEvent);
+		console.log($storedData);
 		return localData
 	}
 	
@@ -131,6 +141,7 @@
 		console.log("payday");
 		console.log({payload})
 		for (let i = 0; i < Object.keys(payload).length; i++) {
+			console.log(Object.keys(payload)[i]);
 			if (allInfo){
 				userTimes.push({name: Object.keys(payload)[i],
 								times: payload[Object.keys(payload)[i]]
@@ -198,6 +209,7 @@
 <main>
 	<div class="cf">
 		<div class="input-side" role="region">
+			<button style="float:left" type="button" class="btn btn-primary btn-lg" on:click={() => location.href = "/"}>Back to Home Page</button>
 			<h2>Event: {eventID}</h2>
 			<h2>Share Your Availability</h2>
 			<div class="name-wrapper">
@@ -205,7 +217,7 @@
 				<input id="name" bind:value={name}>
 			</div>
 			<h3>When are you available to meet?</h3>
-			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>, Wednesday after 3pm" and so on... Be sure to indicate AM or PM.</p>
+			<p><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>

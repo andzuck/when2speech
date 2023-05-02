@@ -4,3 +4,4 @@ import { writable } from 'svelte/store';
 export let storedData = writable({});
 export let currentUser = writable("");
 export let tTT = writable("");
+export let currentEvent = writable("");
