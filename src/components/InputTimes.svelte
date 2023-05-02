@@ -10,6 +10,9 @@
 
 	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	export let eventID;
+	// concept: user/identification
+	// property: name
+	// state: becoming a participant of the event
 	let name = '';
 	let text = '';
 	let loading = false;
@@ -284,6 +287,8 @@
 				<label id="name-label" for="name"><h3>Name: </h3></label>
 				<input id="name" bind:value={name}>
 			</div>
+			<!-- properties of user concept: time zone, availabilities -->
+			<!-- related functions: presubmit, retro, submit -->
 			<TimeZoneSelect></TimeZoneSelect>
 			<p class="instructions"><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> or <u>date</u> (interpreted as current year, current date) followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>

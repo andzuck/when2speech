@@ -13448,7 +13448,7 @@ var app = (function () {
     	return block;
     }
 
-    // (309:3) {:then topTimes}
+    // (314:3) {:then topTimes}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*topTimes*/ ctx[30];
@@ -13509,14 +13509,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(309:3) {:then topTimes}",
+    		source: "(314:3) {:then topTimes}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (310:3) {#each topTimes as time}
+    // (315:3) {#each topTimes as time}
     function create_each_block(ctx) {
     	let div;
     	let p;
@@ -13571,16 +13571,16 @@ var app = (function () {
     			br2 = element("br");
     			attr_dev(time, "datetime", "");
     			attr_dev(time, "aria-label", time_aria_label_value = /*time*/ ctx[31].accessibleTime);
-    			add_location(time, file$5, 311, 11, 12035);
-    			add_location(b, file$5, 311, 8, 12032);
-    			add_location(br0, file$5, 312, 5, 12155);
-    			add_location(u, file$5, 313, 5, 12165);
-    			add_location(br1, file$5, 313, 34, 12194);
+    			add_location(time, file$5, 316, 11, 12256);
+    			add_location(b, file$5, 316, 8, 12253);
+    			add_location(br0, file$5, 317, 5, 12376);
+    			add_location(u, file$5, 318, 5, 12386);
+    			add_location(br1, file$5, 318, 34, 12415);
     			attr_dev(p, "class", "svelte-rs5xo7");
-    			add_location(p, file$5, 311, 5, 12029);
+    			add_location(p, file$5, 316, 5, 12250);
     			attr_dev(div, "class", "top-time svelte-rs5xo7");
-    			add_location(div, file$5, 310, 4, 11999);
-    			add_location(br2, file$5, 316, 4, 12238);
+    			add_location(div, file$5, 315, 4, 12220);
+    			add_location(br2, file$5, 321, 4, 12459);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13628,14 +13628,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(310:3) {#each topTimes as time}",
+    		source: "(315:3) {#each topTimes as time}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (307:24)      <p>Processing Times...</p>    {:then topTimes}
+    // (312:24)      <p>Processing Times...</p>    {:then topTimes}
     function create_pending_block(ctx) {
     	let p;
 
@@ -13644,7 +13644,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Processing Times...";
     			attr_dev(p, "class", "svelte-rs5xo7");
-    			add_location(p, file$5, 307, 4, 11920);
+    			add_location(p, file$5, 312, 4, 12141);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -13659,7 +13659,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(307:24)      <p>Processing Times...</p>    {:then topTimes}",
+    		source: "(312:24)      <p>Processing Times...</p>    {:then topTimes}",
     		ctx
     	});
 
@@ -13884,84 +13884,84 @@ var app = (function () {
     			add_location(link, file$5, 1, 1, 15);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary btn-lg mb-3");
-    			add_location(button, file$5, 275, 2, 9864);
+    			add_location(button, file$5, 278, 2, 9963);
     			attr_dev(h20, "id", "event-name");
     			attr_dev(h20, "class", "svelte-rs5xo7");
-    			add_location(h20, file$5, 277, 3, 10030);
+    			add_location(h20, file$5, 280, 3, 10129);
     			attr_dev(p0, "class", "svelte-rs5xo7");
-    			add_location(p0, file$5, 279, 3, 10173);
+    			add_location(p0, file$5, 282, 3, 10272);
     			attr_dev(p1, "aria-label", /*accessibleDateRangeString*/ ctx[4]);
     			attr_dev(p1, "class", "svelte-rs5xo7");
-    			add_location(p1, file$5, 280, 3, 10205);
-    			add_location(h30, file$5, 281, 3, 10273);
+    			add_location(p1, file$5, 283, 3, 10304);
+    			add_location(h30, file$5, 284, 3, 10372);
     			attr_dev(h31, "class", "svelte-rs5xo7");
-    			add_location(h31, file$5, 283, 38, 10374);
+    			add_location(h31, file$5, 286, 38, 10473);
     			attr_dev(label0, "id", "name-label");
     			attr_dev(label0, "for", "name");
     			attr_dev(label0, "class", "svelte-rs5xo7");
-    			add_location(label0, file$5, 283, 4, 10340);
+    			add_location(label0, file$5, 286, 4, 10439);
     			attr_dev(input0, "id", "name");
     			attr_dev(input0, "class", "svelte-rs5xo7");
-    			add_location(input0, file$5, 284, 4, 10402);
+    			add_location(input0, file$5, 287, 4, 10501);
     			attr_dev(div0, "class", "name-wrapper svelte-rs5xo7");
-    			add_location(div0, file$5, 282, 3, 10309);
-    			add_location(b0, file$5, 287, 27, 10512);
-    			add_location(b1, file$5, 287, 50, 10535);
-    			add_location(u0, file$5, 287, 115, 10600);
-    			add_location(u1, file$5, 287, 141, 10626);
-    			add_location(i0, file$5, 287, 213, 10698);
-    			add_location(u2, file$5, 287, 266, 10751);
-    			add_location(i1, file$5, 287, 280, 10765);
-    			add_location(i2, file$5, 287, 300, 10785);
-    			add_location(u3, file$5, 287, 318, 10803);
-    			add_location(i3, file$5, 287, 333, 10818);
+    			add_location(div0, file$5, 285, 3, 10408);
+    			add_location(b0, file$5, 292, 27, 10733);
+    			add_location(b1, file$5, 292, 50, 10756);
+    			add_location(u0, file$5, 292, 115, 10821);
+    			add_location(u1, file$5, 292, 141, 10847);
+    			add_location(i0, file$5, 292, 213, 10919);
+    			add_location(u2, file$5, 292, 266, 10972);
+    			add_location(i1, file$5, 292, 280, 10986);
+    			add_location(i2, file$5, 292, 300, 11006);
+    			add_location(u3, file$5, 292, 318, 11024);
+    			add_location(i3, file$5, 292, 333, 11039);
     			attr_dev(p2, "class", "instructions svelte-rs5xo7");
-    			add_location(p2, file$5, 287, 3, 10488);
+    			add_location(p2, file$5, 292, 3, 10709);
     			attr_dev(textarea0, "aria-label", "an input field for your availability");
     			attr_dev(textarea0, "placeholder", "");
     			attr_dev(textarea0, "class", "svelte-rs5xo7");
-    			add_location(textarea0, file$5, 289, 3, 10957);
-    			add_location(br0, file$5, 290, 3, 11082);
+    			add_location(textarea0, file$5, 294, 3, 11178);
+    			add_location(br0, file$5, 295, 3, 11303);
     			attr_dev(input1, "id", "presub");
     			attr_dev(input1, "type", "button");
     			attr_dev(input1, "class", "btn btn-primary btn-sm");
     			input1.value = "Process Text";
-    			add_location(input1, file$5, 291, 3, 11090);
-    			add_location(br1, file$5, 292, 3, 11200);
-    			add_location(b2, file$5, 293, 53, 11258);
+    			add_location(input1, file$5, 296, 3, 11311);
+    			add_location(br1, file$5, 297, 3, 11421);
+    			add_location(b2, file$5, 298, 53, 11479);
     			attr_dev(p3, "class", "instructions svelte-rs5xo7");
-    			add_location(p3, file$5, 293, 29, 11234);
+    			add_location(p3, file$5, 298, 29, 11455);
     			attr_dev(label1, "for", "confirmation");
-    			add_location(label1, file$5, 293, 3, 11208);
+    			add_location(label1, file$5, 298, 3, 11429);
     			set_style(textarea1, "background-color", "white");
     			textarea1.readOnly = true;
     			attr_dev(textarea1, "id", "confirmation");
     			attr_dev(textarea1, "aria-label", "an input field to confirm availability");
     			attr_dev(textarea1, "placeholder", "");
     			attr_dev(textarea1, "class", "svelte-rs5xo7");
-    			add_location(textarea1, file$5, 294, 3, 11408);
-    			add_location(br2, file$5, 295, 3, 11560);
+    			add_location(textarea1, file$5, 299, 3, 11629);
+    			add_location(br2, file$5, 300, 3, 11781);
     			attr_dev(p4, "id", "edited");
     			attr_dev(p4, "class", "svelte-rs5xo7");
-    			add_location(p4, file$5, 296, 3, 11568);
+    			add_location(p4, file$5, 301, 3, 11789);
     			attr_dev(input2, "type", "button");
     			attr_dev(input2, "id", "final-submit");
     			attr_dev(input2, "class", "btn btn-primary btn-sm mb-2");
     			input2.value = "Submit Final Response";
-    			add_location(input2, file$5, 297, 3, 11591);
-    			add_location(br3, file$5, 298, 3, 11718);
+    			add_location(input2, file$5, 302, 3, 11812);
+    			add_location(br3, file$5, 303, 3, 11939);
     			attr_dev(div1, "class", "input-side svelte-rs5xo7");
     			attr_dev(div1, "role", "region");
-    			add_location(div1, file$5, 276, 2, 9988);
+    			add_location(div1, file$5, 279, 2, 10087);
     			attr_dev(h21, "class", "svelte-rs5xo7");
-    			add_location(h21, file$5, 305, 3, 11859);
+    			add_location(h21, file$5, 310, 3, 12080);
     			attr_dev(div2, "class", "top-times-side svelte-rs5xo7");
     			attr_dev(div2, "role", "region");
-    			add_location(div2, file$5, 304, 2, 11813);
+    			add_location(div2, file$5, 309, 2, 12034);
     			attr_dev(div3, "class", "cf svelte-rs5xo7");
-    			add_location(div3, file$5, 274, 1, 9845);
+    			add_location(div3, file$5, 277, 1, 9944);
     			attr_dev(main, "class", "svelte-rs5xo7");
-    			add_location(main, file$5, 273, 0, 9837);
+    			add_location(main, file$5, 276, 0, 9936);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -14173,7 +14173,12 @@ var app = (function () {
     	validate_slots('InputTimes', slots, []);
     	const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     	let { eventID } = $$props;
+
+    	// concept: user/identification
+    	// property: name
+    	// state: becoming a participant of the event
     	let name = '';
+
     	let text = '';
     	let loading = false;
     	let availableTimes = null;
