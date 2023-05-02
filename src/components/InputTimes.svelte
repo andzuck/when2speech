@@ -8,6 +8,7 @@
 	export let eventID;
 	let name = '';
 	let text = '';
+	let loading = false;
 	let availableTimes = null;
 	let API_BASE = 'http://localhost:3001';
 	import accessibleDate from 'accessible-date';
@@ -119,6 +120,36 @@
 			alert('please include name!')
 		}
 		else{
+			// console.log('here in submit');
+			// try {
+			//     loading = true;
+
+			//     console.log('here1 in submit');
+			//     const requestOptions = {
+			//       method: "POST",
+			//       headers: { "Content-Type": "application/json" },
+			//       body: JSON.stringify({ prompt }),
+			//     };
+
+			//     console.log('here2 in submit');
+
+			//     const res = await fetch("http://localhost:5000/ask", requestOptions);
+
+			//     console.log('here3 in submit');
+
+			//     if (!res.ok) {
+			//       throw new Error("Something went wrong");
+			//     }
+
+			//     const { message } = await res.json();
+			//     console.log('message');
+			//     console.log(message);
+			//   } catch (err) {
+			//     console.error(err, "err");
+			//   } finally {
+			//     loading = false;
+			//   }
+
 			availableTimes = processText(text);
 			postTimes(name, availableTimes);
 			let userTimes = getAllUserTimes(true);
