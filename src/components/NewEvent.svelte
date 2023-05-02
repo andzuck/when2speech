@@ -46,8 +46,8 @@
         }
         currentEvent.set(eventID);
         console.log("in handle submit");
-        // properties of sharing mechanism event concept: time zone, date range
-        eventProperties.set(Object.assign({}, {[eventID]: {timeZone: timeZone, dateRange: dateRange, eventName: eventName}}, $eventProperties))
+        // properties of sharing mechanism event concept: date range
+        eventProperties.set(Object.assign({}, {[eventID]: {dateRange: dateRange, eventName: eventName}}, $eventProperties))
         console.log($eventProperties);console
 
         location.href = "/" + eventID;
@@ -73,7 +73,7 @@
     <form class:submitted on:submit|preventDefault={handleSubmit}>
     <div class="form-element">
         <div><label for="event-name" alt="required"><h2>Event Name</h2></label></div>
-        <!-- property of sharing mechanism event concept: event name, used to generate unique event code -->
+        <!-- property of sharing mechanism event concept: event name -->
         <input class="form-control" required aria-required=”true” id="event-name" bind:value={eventName} oninvalid="this.setCustomValidity('Please enter event name.')" oninput="setCustomValidity('')">
     </div>
     <div class="form-element">
