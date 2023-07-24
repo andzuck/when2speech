@@ -30,8 +30,8 @@
 	if ($eventProperties[eventID]) {
 		const startDate = new Date($eventProperties[eventID].dateRange[0]);
 		const endDate = new Date($eventProperties[eventID].dateRange[1]);
-		dateRangeString = months[startDate.getMonth()] + " " + startDate.getDate() + " " + startDate.getFullYear();
-		dateRangeString += " - " + months[endDate.getMonth()] + " " + endDate.getDate() + " " + endDate.getFullYear();
+		dateRangeString = months[startDate.getMonth()] + " " + (parseInt(startDate.getDate()) + 1) + " " + startDate.getFullYear();
+		dateRangeString += " - " + months[endDate.getMonth()] + " " + (parseInt(endDate.getDate()) + 1) + " " + endDate.getFullYear();
 
 		console.log($eventProperties[eventID].dateRange);
 		accessibleDateRangeString = accessibleDate($eventProperties[eventID].dateRange[0], {
@@ -284,19 +284,20 @@
 		<button type="button" class="btn btn-primary btn-lg mb-3" on:click={() => location.href = "/"}>Back to Home Page</button>
 		{#if $eventProperties[eventID]}
 		<div class="input-side" role="region">
-			<h2 id="event-name">{$eventProperties[eventID].eventName}</h2>
+			<h2 id="event-name">Event: {$eventProperties[eventID].eventName}</h2>
 			<!-- property of sharing mechanism (event) concept: unique event code -->
 			<p>Event Code: {eventID}</p>
 			<p aria-label={accessibleDateRangeString}>{dateRangeString} </p>
 			<h3>Share Your Availability</h3>
 			<div class="name-wrapper">
-				<label id="name-label" for="name"><h3>Name: </h3></label>
+				<label id="name-label" for="name"><p>Name: </p></label>
 				<input id="name" bind:value={name}>
 			</div>
+			<br>
 			<!-- properties of user concept: time zone, availabilities -->
 			<!-- related functions: presubmit, retro, submit -->
 			<TimeZoneSelect></TimeZoneSelect>
-			<p class="instructions"><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> or <u>date</u> (interpreted as current year, current date) followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
+			<p class="instructions"><b>Voice Record</b> or <b>Type</b> your availability into the box below. Start with the <u>day of the week</u> or <u>date</u> followed by the <i>times</i>. For example, you can say, I'm free... "<u>Monday</u> <i>9am-10am</i> and <i>11am-12pm</i>, <u>Tuesday</u> <i>except 3-4pm</i>," and so on... Be sure to indicate AM or PM.</p>
 			<VoiceRecognition bind:noteContent = {text}></VoiceRecognition>
 			<textarea on:keyup={retro} aria-label="an input field for your availability" bind:value={text} placeholder=""></textarea>
 			<br>
